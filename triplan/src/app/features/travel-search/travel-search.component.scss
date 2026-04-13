@@ -1,0 +1,88 @@
+.travel-card {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    margin-bottom: 24px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input,
+    select {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+  }
+
+  .row {
+    display: flex;
+    gap: 16px;
+
+    .form-group {
+      flex: 1;
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #f2f2f2;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+
+      &.active {
+        background: #4a6cf7;
+        color: #fff;
+      }
+    }
+  }
+
+  .cta {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #4a6cf7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: #3b57d6;
+    }
+  }
+}

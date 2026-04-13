@@ -1,0 +1,62 @@
+<div class="travel-card">
+  <h2>Trip Planner AI</h2>
+  <p class="subtitle">
+    Your personal AI travel agent. Tell us where you want to go, and we'll handle the rest.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <div class="form-group">
+      <label>FROM CITY</label>
+      <input type="text" formControlName="from" placeholder="e.g. New York, USA" />
+    </div>
+
+    <div class="form-group">
+      <label>DESTINATION</label>
+      <input type="text" formControlName="to" placeholder="e.g. Kyoto, Japan" />
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>DEPART</label>
+        <input type="date" formControlName="departDate" />
+      </div>
+
+      <div class="form-group">
+        <label>RETURN</label>
+        <input type="date" formControlName="returnDate" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>TRAVELERS</label>
+        <input type="number" formControlName="travelers" min="1" />
+      </div>
+
+      <div class="form-group">
+        <label>BUDGET</label>
+        <select formControlName="budget">
+          <option value="low">Low</option>
+          <option value="moderate">Moderate</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>INTERESTS</label>
+      <div class="tags">
+        <span
+          *ngFor="let tag of interests"
+          class="tag"
+          [class.active]="selectedInterests.includes(tag)"
+          (click)="toggleInterest(tag)"
+        >
+          {{ tag }}
+        </span>
+      </div>
+    </div>
+
+    <button type="submit" class="cta">Explore Itinerary</button>
+  </form>
+</div>
