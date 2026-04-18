@@ -1,0 +1,1387 @@
+2026-04-18 10:49:58,161 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 10:51:56,345 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 10:51:56,360 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 10:53:28,616 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 10:53:28,619 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 10:55:43,872 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 10:55:43,872 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 10:59:36,518 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 10:59:36,518 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 10:59:48,364 | INFO | RAGAgent | Trip plan generated successfully.
+2026-04-18 10:59:48,364 | ERROR | RAGAgent | Failed to generate trip plan: Empty response
+2026-04-18 11:00:26,564 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 11:00:26,564 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 11:01:16,219 | INFO | RAGAgent | Trip plan generated successfully.
+2026-04-18 11:01:16,221 | ERROR | RAGAgent | Failed to generate trip plan: Empty response
+2026-04-18 11:02:05,960 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 11:02:05,961 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 11:02:21,528 | INFO | RAGAgent | Trip plan generated successfully. response: {
+  "destination": "Tokyo, Japan",
+  "fromCity": "New York, USA",
+  "startDate": "2024-11-01",
+  "endDate": "2024-11-06",
+  "summary": "An ultra-luxury 6-day journey through Tokyo, blending Michelin-starred dining, private cultural tours, and the latest technological marvels.",
+  "estimatedTotalBudget": "$14,000",
+  "budgetBreakdown": {
+    "flights": "$7,500",
+    "hotels": "$4,500",
+    "food": "$1,500",
+    "transportation": "$500"
+  },
+  "flights": [
+    {
+      "fromCity": "New York (JFK)",
+      "toCity": "Tokyo (HND)",
+      "estimatedPrice": "$3,750",
+      "duration": "14h 35m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL5",
+          "departureTime": "13:30",
+          "arrivalTime": "16:35 (+1 day)",
+          "gate": "Terminal 8, Gate 7"
+        }
+      ]
+    },
+    {
+      "fromCity": "Tokyo (HND)",
+      "toCity": "New York (JFK)",
+      "estimatedPrice": "$3,750",
+      "duration": "12h 50m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL6",
+          "departureTime": "11:10",
+          "arrivalTime": "10:00",
+          "gate": "Terminal 3, Gate 112"
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Aman Tokyo",
+      "description": "A luxury sanctuary located in the Otemachi Tower, offering large rooms with traditional Japanese aesthetics and panoramic city views.",
+      "estimatedPricePerNight": "$1,500",
+      "location": "1-5-6 Otemachi, Chiyoda City, Tokyo"
+    }
+  ],
+  "dailyItinerary": [
+    {
+      "day": 1,
+      "date": "2024-11-01",
+      "title": "Arrival and Otemachi Evening",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "16°C"
+      },
+      "activities": [
+        {
+          "name": "Private Airport Transfer",
+          "time": "17:30",
+          "description": "Luxury sedan transfer from Haneda Airport to Aman Tokyo.",
+          "location": "Haneda Airport",
+          "estimatedCost": "$150",
+          "type": "travel"
+        },
+        {
+          "name": "Dinner at Musashi by Aman",
+          "time": "20:00",
+          "description": "Exquisite Edomae-style sushi prepared by master chef Musashi.",
+          "location": "Aman Tokyo",
+          "estimatedCost": "$300",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-11-02",
+      "title": "Traditional Culture and Modern Shibuya",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "18°C"
+      },
+      "activities": [
+        {
+          "name": "Meiji Jingu Shrine",
+          "time": "09:00",
+          "description": "A peaceful walk through the forested grounds of Tokyo's most famous Shinto shrine.",
+          "location": "Shibuya City",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at Narisawa",
+          "time": "12:30",
+          "description": "Innovative Satoyama cuisine focusing on sustainability and Japanese nature.",
+          "location": "Minami Aoyama",
+          "estimatedCost": "$250",
+          "type": "restaurant"
+        },
+        {
+          "name": "Shibuya Sky",
+          "time": "16:00",
+          "description": "Observation deck offering 360-degree views of the city and the famous scramble crossing.",
+          "location": "Shibuya Scramble Square",
+          "estimatedCost": "$20",
+          "type": "activity"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-11-03",
+      "title": "Digital Art and High-End Ginza",
+      "weather": {
+        "condition": "Partly Cloudy",
+        "temperature": "17°C"
+      },
+      "activities": [
+        {
+          "name": "teamLab Borderless",
+          "time": "10:00",
+          "description": "Immersive digital art museum featuring world-renowned light installations.",
+          "location": "Azabudai Hills",
+          "estimatedCost": "$35",
+          "type": "activity"
+        },
+        {
+          "name": "Ginza Shopping and Tea",
+          "time": "14:00",
+          "description": "Explore high-end boutiques and the historic Mitsukoshi department store.",
+          "location": "Ginza District",
+          "estimatedCost": "$100",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Sukiyabashi Jiro",
+          "time": "19:00",
+          "description": "The world-famous Michelin-starred sushi experience (requires advanced booking).",
+          "location": "Ginza",
+          "estimatedCost": "$400",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-11-04",
+      "title": "Old Tokyo and Tech Hub",
+      "weather": {
+        "condition": "Cloudy",
+        "temperature": "15°C"
+      },
+      "activities": [
+        {
+          "name": "Senso-ji Temple",
+          "time": "09:30",
+          "description": "Tokyo's oldest temple in the heart of Asakusa.",
+          "location": "Asakusa",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Akihabara Electric Town",
+          "time": "13:00",
+          "description": "The center of Japan's otaku culture and cutting-edge electronics.",
+          "location": "Akihabara",
+          "estimatedCost": "$50",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Kagurazaka Ishikawa",
+          "time": "19:30",
+          "description": "Three-Michelin-starred Kaiseki dining in a refined atmosphere.",
+          "location": "Kagurazaka",
+          "estimatedCost": "$350",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-11-05",
+      "title": "Mount Fuji Day Trip",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "12°C"
+      },
+      "activities": [
+        {
+          "name": "Private Hakone Tour",
+          "time": "08:00",
+          "description": "Guided tour of Hakone including Lake Ashi cruise and views of Mt. Fuji.",
+          "location": "Hakone",
+          "estimatedCost": "$600",
+          "type": "activity"
+        },
+        {
+          "name": "Kaiseki Lunch at Gora Kadan",
+          "time": "13:00",
+          "description": "Traditional multi-course lunch at a historic Ryokan.",
+          "location": "Hakone",
+          "estimatedCost": "$150",
+          "type": "restaurant"
+        },
+        {
+          "name": "Return to Tokyo",
+          "time": "17:00",
+          "description": "Private car return to the hotel.",
+          "location": "Tokyo",
+          "estimatedCost": "$200",
+          "type": "travel"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2024-11-06",
+      "title": "Farewell Tokyo",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "16°C"
+      },
+      "activities": [
+        {
+          "name": "Breakfast at Aman",
+          "time": "08:00",
+          "description": "Final Japanese-style breakfast overlooking the Imperial Palace gardens.",
+          "location": "Aman Tokyo",
+          "estimatedCost": "$60",
+          "type": "restaurant"
+        },
+        {
+          "name": "Transfer to Haneda",
+          "time": "09:00",
+          "description": "Private transfer for departure flight.",
+          "location": "Haneda Airport",
+          "estimatedCost": "$150",
+          "type": "travel"
+        }
+      ]
+    }
+  ]
+}
+2026-04-18 11:03:06,978 | ERROR | RAGAgent | Failed to generate trip plan: Empty response
+2026-04-18 11:07:16,736 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 11:07:16,739 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 11:19:57,987 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 11:19:57,989 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 11:20:12,030 | INFO | RAGAgent | Trip plan generated successfully. response: {
+  "destination": "Tokyo, Japan",
+  "fromCity": "Los Angeles, USA",
+  "startDate": "2024-05-10",
+  "endDate": "2024-05-15",
+  "summary": "A premium exploration of Tokyo blending traditional culture, cutting-edge technology, and world-class culinary experiences. This itinerary focuses on the contrast between the historic temples of Asakusa and the neon-lit streets of Shinjuku and Shibuya.",
+  "estimatedTotalBudget": "$7,500 USD",
+  "budgetBreakdown": {
+    "flights": "$2,800 USD",
+    "hotels": "$2,500 USD",
+    "food": "$1,500 USD",
+    "transportation": "$700 USD"
+  },
+  "flights": [
+    {
+      "fromCity": "Los Angeles (LAX)",
+      "toCity": "Tokyo Haneda (HND)",
+      "estimatedPrice": "$1,400 USD",
+      "duration": "11h 50m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL61",
+          "departureTime": "13:05",
+          "arrivalTime": "16:45 (+1 day)",
+          "gate": "150"
+        }
+      ]
+    },
+    {
+      "fromCity": "Tokyo Haneda (HND)",
+      "toCity": "Los Angeles (LAX)",
+      "estimatedPrice": "$1,400 USD",
+      "duration": "10h 15m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL62",
+          "departureTime": "17:30",
+          "arrivalTime": "11:45",
+          "gate": "112"
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Park Hyatt Tokyo",
+      "description": "An iconic luxury hotel located in Shinjuku, offering breathtaking views of Mount Fuji and the city skyline. Known for its sophisticated service and the famous New York Bar.",
+      "estimatedPricePerNight": "$500 USD",
+      "location": "3-7-1-2 Nishi-Shinjuku, Shinjuku-ku, Tokyo"
+    }
+  ],
+  "dailyItinerary": [
+    {
+      "day": 1,
+      "date": "2024-05-11",
+      "title": "Arrival and Shinjuku Heights",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "21°C / 70°F"
+      },
+      "activities": [
+        {
+          "name": "Airport Transfer",
+          "time": "17:30",
+          "description": "Private transfer from Haneda Airport to Park Hyatt Tokyo.",
+          "location": "Haneda Airport Terminal 3",
+          "estimatedCost": "$150 USD",
+          "type": "travel"
+        },
+        {
+          "name": "Dinner at New York Grill",
+          "time": "20:00",
+          "description": "Enjoy a high-end steak dinner with 360-degree views of the Tokyo skyline.",
+          "location": "52nd Floor, Park Hyatt Tokyo",
+          "estimatedCost": "$250 USD",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-05-12",
+      "title": "Tradition and Tech",
+      "weather": {
+        "condition": "Partly Cloudy",
+        "temperature": "22°C / 72°F"
+      },
+      "activities": [
+        {
+          "name": "Tsukiji Outer Market",
+          "time": "08:30",
+          "description": "Explore the vibrant stalls of the historic fish market and enjoy fresh sushi for breakfast.",
+          "location": "4-16-2 Tsukiji, Chuo City",
+          "estimatedCost": "$60 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Senso-ji Temple",
+          "time": "11:00",
+          "description": "Visit Tokyo's oldest temple in the heart of Asakusa.",
+          "location": "2-3-1 Asakusa, Taito City",
+          "estimatedCost": "$0 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Akihabara Electric Town",
+          "time": "14:30",
+          "description": "Immerse yourself in the center of Japanese tech and anime culture.",
+          "location": "Sotokanda, Chiyoda City",
+          "estimatedCost": "$100 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Kanda Matsuya",
+          "time": "19:00",
+          "description": "Traditional Soba noodles in a historic building dating back to the Meiji era.",
+          "location": "1-13 Kanda Sudacho, Chiyoda City",
+          "estimatedCost": "$40 USD",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-05-13",
+      "title": "Fashion and Shibuya Scrambles",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "23°C / 73°F"
+      },
+      "activities": [
+        {
+          "name": "Meiji Jingu Shrine",
+          "time": "09:00",
+          "description": "A peaceful walk through the forest leading to the grand Shinto shrine.",
+          "location": "1-1 Yoyogikamizonocho, Shibuya City",
+          "estimatedCost": "$0 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Takeshita Street & Harajuku",
+          "time": "11:30",
+          "description": "Experience the quirky fashion and street food of Harajuku.",
+          "location": "1-chome Jingumae, Shibuya City",
+          "estimatedCost": "$50 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Shibuya Sky",
+          "time": "16:00",
+          "description": "Observation deck overlooking the famous Shibuya Crossing.",
+          "location": "2-24-12 Shibuya, Shibuya City",
+          "estimatedCost": "$20 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Narisawa",
+          "time": "19:30",
+          "description": "Innovative 'Satoyama' cuisine at one of the world's best restaurants.",
+          "location": "2-6-15 Minamiaoyama, Minato City",
+          "estimatedCost": "$350 USD",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-05-14",
+      "title": "Digital Art and Ginza Luxury",
+      "weather": {
+        "condition": "Cloudy",
+        "temperature": "20°C / 68°F"
+      },
+      "activities": [
+        {
+          "name": "teamLab Borderless",
+          "time": "10:00",
+          "description": "A world of digital artworks without boundaries.",
+          "location": "Azabudai Hills, Minato City",
+          "estimatedCost": "$30 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Ginza Shopping District",
+          "time": "14:00",
+          "description": "Upscale shopping and gallery hopping in Tokyo's most glamorous neighborhood.",
+          "location": "Ginza, Chuo City",
+          "estimatedCost": "$200 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Ginza Kyubey",
+          "time": "19:00",
+          "description": "World-renowned Edomae sushi experience.",
+          "location": "8-7-6 Ginza, Chuo City",
+          "estimatedCost": "$300 USD",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-05-15",
+      "title": "Imperial Gardens and Departure",
+      "weather": {
+        "condition": "Showers",
+        "temperature": "19°C / 66°F"
+      },
+      "activities": [
+        {
+          "name": "Imperial Palace East Garden",
+          "time": "09:30",
+          "description": "Stroll through the former site of Edo Castle.",
+          "location": "1-1 Chiyoda, Chiyoda City",
+          "estimatedCost": "$0 USD",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at T's TanTan",
+          "time": "12:30",
+          "description": "Famous vegan ramen inside Tokyo Station.",
+          "location": "1-9-1 Marunouchi, Chiyoda City",
+          "estimatedCost": "$25 USD",
+          "type": "restaurant"
+        },
+        {
+          "name": "Transfer to Haneda",
+          "time": "14:30",
+          "description": "Private car service to the airport.",
+          "location": "Tokyo Station to Haneda",
+          "estimatedCost": "$100 USD",
+          "type": "travel"
+        }
+      ]
+    }
+  ]
+}
+2026-04-18 12:15:03,702 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 12:15:03,708 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 12:15:17,192 | INFO | RAGAgent | Trip plan generated successfully. response: {
+  "destination": "Tokyo, Japan",
+  "fromCity": "New York, NY",
+  "startDate": "2024-05-10",
+  "endDate": "2024-05-15",
+  "summary": "An ultra-luxury 5-day exploration of Tokyo, blending centuries-old cultural traditions with cutting-edge technology, high-end shopping in Ginza, and world-class Michelin-starred dining.",
+  "estimatedTotalBudget": "$26,500",
+  "budgetBreakdown": {
+    "flights": "$16,000",
+    "hotels": "$6,500",
+    "food": "$3,000",
+    "transportation": "$1,000"
+  },
+  "flights": [
+    {
+      "fromCity": "JFK",
+      "toCity": "HND",
+      "estimatedPrice": "$8,000 per person",
+      "duration": "14h 05m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL005",
+          "departureTime": "1:30 PM",
+          "arrivalTime": "4:35 PM (+1 day)",
+          "gate": "Terminal 8, Gate 12"
+        }
+      ]
+    },
+    {
+      "fromCity": "HND",
+      "toCity": "JFK",
+      "estimatedPrice": "Included",
+      "duration": "13h 55m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL006",
+          "departureTime": "11:05 AM",
+          "arrivalTime": "11:00 AM",
+          "gate": "Terminal 3, Gate 112"
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Aman Tokyo",
+      "description": "Occupying the top six floors of the Otemachi Tower, this hotel offers a serene sanctuary with minimalist design, a world-class spa, and unparalleled views of the Imperial Palace Gardens and Mount Fuji.",
+      "estimatedPricePerNight": "$1,300",
+      "location": "The Otemachi Tower, 1-5-6 Otemachi, Chiyoda-ku, Tokyo"
+    }
+  ],
+  "dailyItinerary": [
+    {
+      "day": 1,
+      "date": "2024-05-10",
+      "title": "Arrival and Shinjuku Heights",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "21°C / 70°F"
+      },
+      "activities": [
+        {
+          "name": "Private Transfer to Aman Tokyo",
+          "time": "5:30 PM",
+          "description": "Luxury sedan transfer from Haneda Airport to your hotel in Otemachi.",
+          "location": "Haneda Airport",
+          "estimatedCost": "$200",
+          "type": "travel"
+        },
+        {
+          "name": "Dinner at New York Grill",
+          "time": "8:30 PM",
+          "description": "Iconic dining at the top of the Park Hyatt Tokyo, featuring premium Japanese beef and live jazz.",
+          "location": "3-7-1-2 Nishi-Shinjuku, Shinjuku-ku",
+          "estimatedCost": "$400",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-05-11",
+      "title": "Tradition and High Fashion",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "23°C / 73°F"
+      },
+      "activities": [
+        {
+          "name": "Meiji Jingu Shrine",
+          "time": "9:00 AM",
+          "description": "A peaceful morning walk through the forested grounds of Tokyo's most famous Shinto shrine.",
+          "location": "1-1 Yoyogikamizonocho, Shibuya-ku",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Harajuku & Omotesando Shopping",
+          "time": "11:30 AM",
+          "description": "Explore the contrast between the quirky Takeshita Street and the luxury boutiques of Omotesando Hills.",
+          "location": "Jingumae, Shibuya-ku",
+          "estimatedCost": "$500",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at Narisawa",
+          "time": "1:30 PM",
+          "description": "Innovative 'Innovative Satoyama' cuisine that celebrates Japanese nature and seasons.",
+          "location": "2-6-15 Minami-Aoyama, Minato-ku",
+          "estimatedCost": "$600",
+          "type": "restaurant"
+        },
+        {
+          "name": "Shibuya Crossing & Sky",
+          "time": "4:30 PM",
+          "description": "Witness the world's busiest intersection and view the city from the Shibuya Sky observatory.",
+          "location": "2-24-12 Shibuya, Shibuya-ku",
+          "estimatedCost": "$40",
+          "type": "activity"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-05-12",
+      "title": "Future Tech and Digital Art",
+      "weather": {
+        "condition": "Partly Cloudy",
+        "temperature": "20°C / 68°F"
+      },
+      "activities": [
+        {
+          "name": "Akihabara Electric Town",
+          "time": "10:00 AM",
+          "description": "Guided tour of the center of gaming, anime, and electronics culture.",
+          "location": "Sotokanda, Chiyoda-ku",
+          "estimatedCost": "$150",
+          "type": "activity"
+        },
+        {
+          "name": "teamLab Borderless",
+          "time": "2:00 PM",
+          "description": "Immerse yourself in a world of digital art without boundaries in the Azabudai Hills complex.",
+          "location": "Azabudai Hills, Minato-ku",
+          "estimatedCost": "$80",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Ginza Kojyu",
+          "time": "7:30 PM",
+          "description": "Exquisite Michelin-starred Kaiseki dining focusing on seasonal ingredients.",
+          "location": "5-4-8 Ginza, Chuo-ku",
+          "estimatedCost": "$700",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-05-13",
+      "title": "Old Tokyo and Culinary Mastery",
+      "weather": {
+        "condition": "Showers",
+        "temperature": "18°C / 64°F"
+      },
+      "activities": [
+        {
+          "name": "Tsukiji Outer Market Tour",
+          "time": "8:30 AM",
+          "description": "Private chef-led tour of the market followed by a sushi-making workshop.",
+          "location": "4-16-2 Tsukiji, Chuo-ku",
+          "estimatedCost": "$450",
+          "type": "activity"
+        },
+        {
+          "name": "Senso-ji Temple",
+          "time": "1:00 PM",
+          "description": "Visit Tokyo's oldest temple and browse the traditional stalls of Nakamise-dori.",
+          "location": "2-3-1 Asakusa, Taito-ku",
+          "estimatedCost": "$20",
+          "type": "activity"
+        },
+        {
+          "name": "Sumida River Cruise",
+          "time": "3:30 PM",
+          "description": "Private boat charter from Asakusa to Hamarikyu Gardens.",
+          "location": "Asakusa Pier",
+          "estimatedCost": "$300",
+          "type": "travel"
+        },
+        {
+          "name": "Dinner at Sushi Yoshitake",
+          "time": "8:00 PM",
+          "description": "An intimate, world-renowned Edomae sushi experience in Ginza.",
+          "location": "7-8-15 Ginza, Chuo-ku",
+          "estimatedCost": "$900",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-05-14",
+      "title": "Imperial Grandeur and Departure",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "22°C / 72°F"
+      },
+      "activities": [
+        {
+          "name": "Imperial Palace East Garden",
+          "time": "9:00 AM",
+          "description": "A walk through the former site of Edo Castle's innermost circles of defense.",
+          "location": "1-1 Chiyoda, Chiyoda-ku",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Ginza Department Stores",
+          "time": "11:00 AM",
+          "description": "Last-minute luxury shopping at Mitsukoshi and Ginza Six.",
+          "location": "4-6-16 Ginza, Chuo-ku",
+          "estimatedCost": "$1000",
+          "type": "activity"
+        },
+        {
+          "name": "Private Transfer to Haneda",
+          "time": "8:00 AM",
+          "description": "Morning transfer for the return flight on May 15th (Scheduled after final night stay).",
+          "location": "Aman Tokyo",
+          "estimatedCost": "$200",
+          "type": "travel"
+        }
+      ]
+    }
+  ]
+}
+2026-04-18 12:16:45,125 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 12:16:45,125 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 12:16:57,734 | INFO | RAGAgent | Trip plan generated successfully. response: {
+  "destination": "Kyoto, Japan",
+  "fromCity": "San Francisco, USA",
+  "startDate": "2024-10-15",
+  "endDate": "2024-10-20",
+  "summary": "An immersive luxury journey through Japan's cultural heart, focusing on world-class gastronomy, serene Zen gardens, and historic architectural marvels during the beautiful autumn season.",
+  "estimatedTotalBudget": "$8,750",
+  "budgetBreakdown": {
+    "flights": "$2,200",
+    "hotels": "$4,000",
+    "food": "$1,800",
+    "transportation": "$750"
+  },
+  "flights": [
+    {
+      "fromCity": "San Francisco (SFO)",
+      "toCity": "Osaka (KIX)",
+      "estimatedPrice": "$1,100",
+      "duration": "11h 30m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "United Airlines",
+          "flightNumber": "UA35",
+          "departureTime": "11:15 AM",
+          "arrivalTime": "3:15 PM (+1 day)",
+          "gate": "G92"
+        }
+      ]
+    },
+    {
+      "fromCity": "Osaka (KIX)",
+      "toCity": "San Francisco (SFO)",
+      "estimatedPrice": "$1,100",
+      "duration": "10h 15m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "United Airlines",
+          "flightNumber": "UA34",
+          "departureTime": "5:30 PM",
+          "arrivalTime": "11:10 AM",
+          "gate": "North Wing Gate 11"
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "The Ritz-Carlton, Kyoto",
+      "description": "A luxury urban resort situated on the banks of the Kamogawa River, offering traditional Japanese aesthetics with modern sophistication.",
+      "estimatedPricePerNight": "$1,000",
+      "location": "Kamigyo-ku, Kyoto"
+    }
+  ],
+  "dailyItinerary": [
+    {
+      "day": 1,
+      "date": "2024-10-16",
+      "title": "Arrival and Riverside Dining",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "21°C / 70°F"
+      },
+      "activities": [
+        {
+          "name": "Haruka Express Transfer",
+          "time": "4:30 PM",
+          "description": "Premium train transfer from Kansai Airport to Kyoto Station.",
+          "location": "Kansai Airport Station",
+          "estimatedCost": "$35",
+          "type": "travel"
+        },
+        {
+          "name": "Dinner at Pontocho Robin",
+          "time": "8:00 PM",
+          "description": "Traditional Kaiseki dining in a historic townhouse overlooking the river.",
+          "location": "Pontocho Alley",
+          "estimatedCost": "$150",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-10-17",
+      "title": "Arashiyama Zen and Bamboo",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "22°C / 72°F"
+      },
+      "activities": [
+        {
+          "name": "Arashiyama Bamboo Grove",
+          "time": "8:00 AM",
+          "description": "Early morning walk through the towering stalks of bamboo to avoid crowds.",
+          "location": "Arashiyama",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Tenryu-ji Temple",
+          "time": "10:00 AM",
+          "description": "Explore the head temple of the Tenryu branch of Rinzai Zen Buddhism.",
+          "location": "Arashiyama",
+          "estimatedCost": "$10",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at Shigetsu",
+          "time": "12:30 PM",
+          "description": "Michelin-recommended Shojin Ryori (Zen Buddhist vegetarian cuisine).",
+          "location": "Inside Tenryu-ji Grounds",
+          "estimatedCost": "$60",
+          "type": "restaurant"
+        },
+        {
+          "name": "Okochi Sanso Villa",
+          "time": "2:30 PM",
+          "description": "The former estate of a silent film star, featuring exquisite gardens and matcha.",
+          "location": "Arashiyama",
+          "estimatedCost": "$15",
+          "type": "activity"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-10-18",
+      "title": "The Golden Path and Zen Gardens",
+      "weather": {
+        "condition": "Partly Cloudy",
+        "temperature": "19°C / 66°F"
+      },
+      "activities": [
+        {
+          "name": "Kinkaku-ji (The Golden Pavilion)",
+          "time": "9:00 AM",
+          "description": "A Zen temple whose top two floors are completely covered in gold leaf.",
+          "location": "Northern Kyoto",
+          "estimatedCost": "$5",
+          "type": "activity"
+        },
+        {
+          "name": "Ryoan-ji Rock Garden",
+          "time": "11:00 AM",
+          "description": "Contemplate the most famous dry landscape garden in Japan.",
+          "location": "Northern Kyoto",
+          "estimatedCost": "$5",
+          "type": "activity"
+        },
+        {
+          "name": "Nishiki Market Food Tour",
+          "time": "1:30 PM",
+          "description": "Explore 'Kyoto's Kitchen' and sample local delicacies like takotamago.",
+          "location": "Nakagyo-ku",
+          "estimatedCost": "$40",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Monk",
+          "time": "7:00 PM",
+          "description": "Highly acclaimed wood-fired pizza and seasonal small plates by the Philosopher's Path.",
+          "location": "Sakyo-ku",
+          "estimatedCost": "$120",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-10-19",
+      "title": "Shrines and Geisha Districts",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "20°C / 68°F"
+      },
+      "activities": [
+        {
+          "name": "Fushimi Inari Shrine",
+          "time": "7:30 AM",
+          "description": "Hike through the thousands of vermilion torii gates.",
+          "location": "Fushimi-ku",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Kiyomizu-dera Temple",
+          "time": "11:00 AM",
+          "description": "Visit the iconic wooden stage offering panoramic views of the city.",
+          "location": "Higashiyama",
+          "estimatedCost": "$5",
+          "type": "activity"
+        },
+        {
+          "name": "Gion Evening Walk",
+          "time": "5:30 PM",
+          "description": "A guided walk through the entertainment district, spotting Geiko and Maiko.",
+          "location": "Gion District",
+          "estimatedCost": "$50",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Gion Sasaki",
+          "time": "8:00 PM",
+          "description": "A 3-star Michelin experience featuring innovative Japanese counter dining.",
+          "location": "Gion District",
+          "estimatedCost": "$350",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-10-20",
+      "title": "Last Souvenirs and Departure",
+      "weather": {
+        "condition": "Cloudy",
+        "temperature": "18°C / 64°F"
+      },
+      "activities": [
+        {
+          "name": "Kyoto Station Souvenirs",
+          "time": "10:00 AM",
+          "description": "Final shopping for Uji Matcha and traditional crafts at Isetan.",
+          "location": "Kyoto Station",
+          "estimatedCost": "$100",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at Katsukura",
+          "time": "12:30 PM",
+          "description": "Premium tonkatsu (breaded pork cutlet) with seasonal vegetables.",
+          "location": "Kyoto Station",
+          "estimatedCost": "$30",
+          "type": "restaurant"
+        },
+        {
+          "name": "Haruka Express to KIX",
+          "time": "2:30 PM",
+          "description": "Final transit back to the airport for the return flight.",
+          "location": "Kyoto Station",
+          "estimatedCost": "$35",
+          "type": "travel"
+        }
+      ]
+    }
+  ]
+}
+2026-04-18 17:00:21,229 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 17:00:21,232 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 17:01:02,752 | INFO | RAGAgent | Received trip preferences: 
+           {"fromCity": "New York",
+            "destination": "Tokyo",
+            "startDate": "2026-05-01",
+            "endDate": "2026-05-15",
+            "budget": "$5,000",
+            "travelers": 2,
+            "interests": ["coding", "hiking", "gaming"]
+            }
+        
+2026-04-18 17:01:02,754 | INFO | RAGAgent | Generating trip plan from:New York to:Tokyo
+2026-04-18 17:01:18,464 | INFO | RAGAgent | Trip plan generated successfully. response: {
+  "destination": "Tokyo, Japan",
+  "fromCity": "New York, USA",
+  "startDate": "2024-10-10",
+  "endDate": "2024-10-15",
+  "summary": "An ultra-luxury 5-day immersion into Tokyo's blend of ancient tradition and futuristic innovation. This itinerary focuses on world-class gastronomy, private cultural tours, and high-end shopping in the world's most vibrant metropolis.",
+  "estimatedTotalBudget": "$19,500",
+  "budgetBreakdown": {
+    "flights": "$9,500",
+    "hotels": "$6,500",
+    "food": "$2,500",
+    "transportation": "$1,000"
+  },
+  "flights": [
+    {
+      "fromCity": "New York (JFK)",
+      "toCity": "Tokyo (HND)",
+      "estimatedPrice": "$4,750",
+      "duration": "14h 05m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL5",
+          "departureTime": "13:30",
+          "arrivalTime": "16:35 (+1 day)",
+          "gate": "Terminal 8, Gate 12"
+        }
+      ]
+    },
+    {
+      "fromCity": "Tokyo (HND)",
+      "toCity": "New York (JFK)",
+      "estimatedPrice": "$4,750",
+      "duration": "12h 50m",
+      "stops": "Non-stop",
+      "details": [
+        {
+          "airline": "Japan Airlines",
+          "flightNumber": "JL6",
+          "departureTime": "11:05",
+          "arrivalTime": "11:00",
+          "gate": "Terminal 3, Gate 112"
+        }
+      ]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Aman Tokyo",
+      "description": "Occupying the top six floors of the Otemachi Tower, this hotel offers a serene sanctuary with a massive basalt-clad lobby and floor-to-ceiling windows overlooking the Imperial Palace Gardens.",
+      "estimatedPricePerNight": "$1,300",
+      "location": "The Otemachi Tower, 1-5-6 Otemachi, Chiyoda-ku, Tokyo"
+    }
+  ],
+  "dailyItinerary": [
+    {
+      "day": 1,
+      "date": "2024-10-11",
+      "title": "Arrival and Ginza Elegance",
+      "weather": {
+        "condition": "Clear",
+        "temperature": "22°C / 72°F"
+      },
+      "activities": [
+        {
+          "name": "Private Chauffeur Transfer",
+          "time": "17:30",
+          "description": "Luxury sedan transfer from Haneda Airport to Aman Tokyo.",
+          "location": "Haneda Airport",
+          "estimatedCost": "$200",
+          "type": "travel"
+        },
+        {
+          "name": "Check-in at Aman Tokyo",
+          "time": "18:30",
+          "description": "Settle into your suite and enjoy the sunset views over Mount Fuji from the lobby lounge.",
+          "location": "Otemachi",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Dinner at Ginza Kojyu",
+          "time": "20:30",
+          "description": "Michelin-starred Kaiseki dining featuring seasonal ingredients prepared by Chef Toru Okuda.",
+          "location": "Ginza",
+          "estimatedCost": "$450",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-10-12",
+      "title": "Shrines and High Fashion",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "21°C / 70°F"
+      },
+      "activities": [
+        {
+          "name": "Meiji Jingu Shrine Private Tour",
+          "time": "09:00",
+          "description": "Early morning visit to Tokyo's most iconic Shinto shrine with a private guide to explain the history of the Meiji Emperor.",
+          "location": "Shibuya",
+          "estimatedCost": "$150",
+          "type": "activity"
+        },
+        {
+          "name": "Omotesando Shopping",
+          "time": "11:30",
+          "description": "Explore the 'Champs-Élysées' of Tokyo, visiting flagship stores like Prada and Louis Vuitton designed by world-renowned architects.",
+          "location": "Harajuku",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Lunch at Narisawa",
+          "time": "13:30",
+          "description": "Innovative 'Satoyama' cuisine that focuses on the relationship between man and nature.",
+          "location": "Minami Aoyama",
+          "estimatedCost": "$350",
+          "type": "restaurant"
+        },
+        {
+          "name": "Nezu Museum",
+          "time": "15:30",
+          "description": "View pre-modern Japanese and East Asian art in a stunning building with a traditional Japanese garden.",
+          "location": "Minato City",
+          "estimatedCost": "$20",
+          "type": "activity"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-10-13",
+      "title": "Seafood and Digital Art",
+      "weather": {
+        "condition": "Partly Cloudy",
+        "temperature": "19°C / 66°F"
+      },
+      "activities": [
+        {
+          "name": "Tsukiji Outer Market Tasting",
+          "time": "08:30",
+          "description": "A guided walk through the historic outer market to sample high-quality uni, wagyu skewers, and tamagoyaki.",
+          "location": "Tsukiji",
+          "estimatedCost": "$100",
+          "type": "activity"
+        },
+        {
+          "name": "TeamLab Borderless: Mori Building Digital Art Museum",
+          "time": "11:00",
+          "description": "Immerse yourself in a world of borderless artworks that interact with each other and the visitor.",
+          "location": "Azabudai Hills",
+          "estimatedCost": "$35",
+          "type": "activity"
+        },
+        {
+          "name": "Sushi Lunch at Sukiyabashi Jiro Roppongi",
+          "time": "13:00",
+          "description": "Exceptional Edomae sushi served in an intimate setting by the son of the legendary Jiro Ono.",
+          "location": "Roppongi Hills",
+          "estimatedCost": "$400",
+          "type": "restaurant"
+        },
+        {
+          "name": "Ginza Department Store Hopping",
+          "time": "15:30",
+          "description": "Visit Ginza Six and Wako for high-end Japanese crafts and international luxury brands.",
+          "location": "Ginza",
+          "estimatedCost": "$0",
+          "type": "activity"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-10-14",
+      "title": "Old Tokyo and Modern Views",
+      "weather": {
+        "condition": "Cloudy",
+        "temperature": "18°C / 64°F"
+      },
+      "activities": [
+        {
+          "name": "Senso-ji Temple & Asakusa",
+          "time": "09:30",
+          "description": "Visit Tokyo's oldest temple and walk through Nakamise-dori for traditional snacks and souvenirs.",
+          "location": "Asakusa",
+          "estimatedCost": "$0",
+          "type": "activity"
+        },
+        {
+          "name": "Sumida River Private Boat Cruise",
+          "time": "12:00",
+          "description": "Private water taxi from Asakusa to Hamarikyu Gardens, offering a unique perspective of the Tokyo skyline.",
+          "location": "Sumida River",
+          "estimatedCost": "$250",
+          "type": "travel"
+        },
+        {
+          "name": "Lunch at Shiba Tofuya Ukai",
+          "time": "13:30",
+          "description": "Specialized tofu cuisine served in a sprawling traditional garden setting at the base of Tokyo Tower.",
+          "location": "Shiba Park",
+          "estimatedCost": "$150",
+          "type": "restaurant"
+        },
+        {
+          "name": "Dinner at Ryugin",
+          "time": "19:30",
+          "description": "A 3-Michelin-starred journey through Japanese culinary philosophy by Chef Seiji Yamamoto.",
+          "location": "Hibiya",
+          "estimatedCost": "$500",
+          "type": "restaurant"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-10-15",
+      "title": "Serenity and Departure",
+      "weather": {
+        "condition": "Sunny",
+        "temperature": "20°C / 68°F"
+      },
+      "activities": [
+        {
+          "name": "Shinjuku Gyoen National Garden",
+          "time": "08:00",
+          "description": "A morning stroll through one of Tokyo's largest and most popular parks, featuring French, English, and Japanese gardens.",
+          "location": "Shinjuku",
+          "estimatedCost": "$5",
+          "type": "activity"
+        },
+        {
+          "name": "Isetan Shinjuku Food Hall (Depachika)",
+          "time": "10:00",
+          "description": "Last-minute gourmet souvenir shopping at Tokyo's most prestigious department store basement.",
+          "location": "Shinjuku",
+          "estimatedCost": "$100",
+          "type": "activity"
+        },
+        {
+          "name": "Private Transfer to Haneda",
+          "time": "12:30",
+          "description": "Chauffeur service back to Haneda Airport for your return flight.",
+          "location": "Otemachi",
+          "estimatedCost": "$200",
+          "type": "travel"
+        }
+      ]
+    }
+  ]
+}

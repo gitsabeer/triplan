@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TravelSearchComponent } from './features/travel-search/travel-search.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TravelSearchComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

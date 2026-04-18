@@ -1,0 +1,58 @@
+/* Global Typography */
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  line-height: 1.5;
+  background: #fafafa;
+  margin: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 700;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 26px; }
+h3 { font-size: 22px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+h6 { font-size: 14px; }
+
+/* Paragraphs */
+p {
+  margin: 0 0 var(--space-md);
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+/* Muted text */
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* Utility text classes */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-bold { font-weight: 600; }
+.text-light { font-weight: 300; }
+
+/* Small text */
+.text-sm {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* Link styling */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}

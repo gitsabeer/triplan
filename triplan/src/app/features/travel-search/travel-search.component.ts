@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-travel-search',
@@ -23,8 +24,10 @@ export class TravelSearchComponent implements OnInit {
   ];
 
   selectedInterests: string[] = [];
+  router = inject(Router);
+  fb = inject(FormBuilder);
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -49,10 +52,10 @@ export class TravelSearchComponent implements OnInit {
   }
 
   onSearch() {
-    if (this.form.invalid) return;
+  
 
     console.log('Search Data:', this.form.value);
 
-    // TODO: Call your travel API or agent
+    this.router.navigate(['/travel/progress']);
   }
 }

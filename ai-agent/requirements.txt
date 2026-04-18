@@ -1,0 +1,9 @@
+
+numpy
+python-dotenv
+fastapi
+uvicorn
+requests
+google-genai
+fastapi
+slowapi

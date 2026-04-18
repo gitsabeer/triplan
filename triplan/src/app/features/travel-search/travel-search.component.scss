@@ -10,6 +10,7 @@
     margin: 0 0 8px;
     font-size: 26px;
     font-weight: 700;
+    text-align: center;
   }
 
   .subtitle {
@@ -48,25 +49,7 @@
     }
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
 
-    .tag {
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: #f2f2f2;
-      cursor: pointer;
-      font-size: 13px;
-      transition: 0.2s;
-
-      &.active {
-        background: #4a6cf7;
-        color: #fff;
-      }
-    }
-  }
 
   .cta {
     width: 100%;
