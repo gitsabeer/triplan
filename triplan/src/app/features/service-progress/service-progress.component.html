@@ -8,4 +8,22 @@
   <div class="dots">
     <span>.</span><span>.</span><span>.</span>
   </div>
+
+   <div class="status-list">
+    <div 
+      class="status-item" 
+      *ngFor="let msg of agent.statusMessages()">
+      {{ msg }}
+    </div>
+  </div>
+
+  <div class="loading-bar">
+    <div class="loading-fill"></div>
+  </div>
+
+  <div class="skeleton" *ngIf="agent.isStreaming()">
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line short"></div>
+  </div>
+
 </div>

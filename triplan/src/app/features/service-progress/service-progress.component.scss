@@ -29,3 +29,50 @@
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+.status-list {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.status-item {
+  margin-bottom: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-bar {
+  margin-top: 2rem;
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loading-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.skeleton {
+  margin-top: 2rem;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: var(--surface-2);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}

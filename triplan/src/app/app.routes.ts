@@ -1,14 +1,12 @@
 import { Routes } from '@angular/router';
+import { TRAVEL_ROUTES } from './features/travel.routes';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 export const routes: Routes = [
     {
-        path: 'travel',
-        loadChildren: () =>
-            import('./features/travel.routes').then(m => m.TRAVEL_ROUTES)
+        path: 'travel',        
+        children: TRAVEL_ROUTES
     },
-    {
-        path: '',
-        redirectTo: 'travel',
-        pathMatch: 'full'
-    }
+    { path: 'error', component: ErrorPageComponent },
+    { path: '**', redirectTo: 'error' }
 ];

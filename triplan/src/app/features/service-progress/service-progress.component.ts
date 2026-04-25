@@ -1,11 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TravelAiAgentService } from '../../services/travel-ai-agent.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-service-progress',
   standalone: true,
-  imports: [],
+  imports: [NgFor,NgIf],
   templateUrl: './service-progress.component.html',
   styleUrl: './service-progress.component.scss'
 })
@@ -24,12 +25,50 @@ export class ServiceProgressComponent implements OnInit {
 
   currentStep = 0;
   result: any = null;
+  interval: NodeJS.Timeout | undefined;
+
+  constructor() {    
+
+    // Observe final result
+    effect(() => {
+      const result = this.agent.finalResult();
+      if (result) {
+         this.agent.tripPlan.set(result);   // store result
+        this.result = result;
+        clearInterval(this.interval);
+        this.router.navigate(['/travel/result']);
+      }
+    });
+
+    // Observe errors
+    effect(() => {
+      const err = this.agent.error();
+      if (err) {
+        console.error('Stream error', err);
+        this.result = { error: 'Failed to generate trip plan. Please try again.' , details: err};         
+        this.agent.tripPlan.set(this.result);  
+        sessionStorage.setItem('error', JSON.stringify(this.result));
+        this.router.navigate(['/error']);
+        //return throwError(() => err);
+      }
+    });
+
+    
+    // Observe stream completion
+    effect(() => {
+      if (!this.agent.isStreaming()) {
+        console.log('Stream finished');
+      }
+    });
+  }
 
   ngOnInit() {
     this.runProgress();
   }
 
-  runProgress() {
+
+  getTripPlan() {    
+
     this.result = null; // reset result for new run
     const payload = JSON.stringify({
             "fromCity": "New York",
@@ -40,8 +79,25 @@ export class ServiceProgressComponent implements OnInit {
             "travelers": 2,
             "interests": ["coding", "hiking", "food"]
             });
+    this.agent.startTripPlanStatusStream(payload);
 
-    const interval = setInterval(() => {
+  }
+
+  runProgress() {
+
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      // No token → login first → then call getTripPlan
+      this.agent.doLogin('visitor', 'tESTPASSWORD$123').subscribe
+      (tokenPair => {
+        localStorage.setItem('access_token', tokenPair.access_token);
+        this.getTripPlan();
+      });
+    }else {
+      this.getTripPlan();
+    }
+
+    this.interval = setInterval(() => {
       this.currentStep++;
 
       if (this.currentStep === this.steps.length) {
@@ -49,9 +105,17 @@ export class ServiceProgressComponent implements OnInit {
       }
     }, 500);
 
+
     
+    // When backend finishes streaming, it triggers Step 2
+    /**this.agent.getFinalTripPlan(payload).subscribe(result => {
+        this.agent.tripPlan.set(result);   // store result
+        this.result = result;
+        clearInterval(interval);
+        this.router.navigate(['/travel/result']);
+    });*/
     
-     this.agent.getTripPlan(payload).subscribe({
+    /* this.agent.getTripPlan(payload).subscribe({
       next: (result) => {
         this.agent.tripPlan.set(result);   // store result
         this.result = result;
@@ -66,7 +130,7 @@ export class ServiceProgressComponent implements OnInit {
         clearInterval(interval);
         this.router.navigate(['/travel/result']);
       }
-    });
+    });*/
   }
 
 }
