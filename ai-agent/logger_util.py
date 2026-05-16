@@ -5,6 +5,13 @@ import json
 from logging.handlers import RotatingFileHandler
 from datetime import datetime
 
+#############################################################################
+# This module provides logging utilities for the application, including a function to get a configured logger and a function to write audit logs.
+# The get_logger function sets up a logger with both console and file handlers, supporting colored output for the console and structured JSON logs for files.
+# The write_audit function is a helper to log audit events in a structured format to audit log file.
+
+#############################################################################
+
 # Optional: color support
 try:
     from colorama import Fore, Style, init
@@ -13,6 +20,7 @@ try:
 except ImportError:
     COLOR_ENABLED = False
 
+audit_logger = None
 
 class JsonFormatter(logging.Formatter):
     """Structured JSON logs for cloud environments."""
@@ -43,8 +51,33 @@ class ColorFormatter(logging.Formatter):
         message = super().format(record)
         return f"{color}{message}{Style.RESET_ALL}" if COLOR_ENABLED else message
 
+def get_AuditLogger() -> logging.Logger:
 
-def get_logger(name: str):
+    logger = get_logger("audit", isAuditLogger=True)
+    logger.setLevel(logging.INFO)
+
+    handler = RotatingFileHandler(
+        "logs/audit.log",
+        maxBytes=5_000_000,
+        backupCount=5
+    )
+
+    formatter = logging.Formatter(
+        '{"timestamp": "%(asctime)s", "event": %(message)s}'
+    )
+
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+    return logger
+
+def write_audit(event: dict):
+    global audit_logger
+    if audit_logger is None:
+        audit_logger = get_AuditLogger()        
+    audit_logger.info(json.dumps(event))
+
+def get_logger(name: str,isAuditLogger: bool = False) -> logging.Logger:
     os.makedirs("logs", exist_ok=True)
 
     logger = logging.getLogger(name)
@@ -60,6 +93,9 @@ def get_logger(name: str):
         "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
     ))
     logger.addHandler(console_handler)
+
+    if isAuditLogger:
+        return logger
 
     # --- Rotating File Handler (Plain Text) ---
     rotating_handler = RotatingFileHandler(

@@ -85,6 +85,28 @@ class  TripPlan :
   hotels: List[HotelSuggestion];
   dailyItinerary: List[DayPlan];
 
+class TokenData(BaseModel):
+    sub: str
+    type: str  # "access" or "refresh"
+
+class User(BaseModel):
+    username: str
+    hashed_password: str
+    roles: List[str] = []
+    token: str
+    is_active: bool = True
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+class TokenPair(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
 
 class  TripPreferences(BaseModel):
   fromCity: str = Field(..., min_length=2, description="Origin city")

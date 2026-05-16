@@ -1,5 +1,190 @@
+<!-- travel-plan-result.component.html -->
+<div class="result" *ngIf="plan" #pdfContent>
 
-<div *ngIf="tripPlan">
-  <h2>Trip Plan</h2>
-  <pre>{{ tripPlan | json }}</pre>
+
+  <div class="left-main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <h1>{{ plan.destination }}</h1>
+        <div class="back-button ">
+          <lucide-icon name="CircleChevronLeftIcon" class="bk-btn " (click)="goBack()"></lucide-icon>
+          <p class="route">{{ plan.fromCity }} → {{ plan.destination }}</p>
+        </div>
+        <div class="dates-header">
+          <div class="dates">
+            <lucide-icon name="CalendarIcon" class="dates-icon"></lucide-icon>
+            <div>{{ plan.startDate | date:'EEEE, MMMM d, y' }} – {{ plan.endDate | date:'EEEE, MMMM d, y' }}</div>
+          </div>
+          <div class="total-budget">
+            <lucide-icon name="WalletIcon" class="wallet-icon"></lucide-icon>
+            <div>{{ plan.estimatedTotalBudget }}</div>
+          </div>
+        </div>
+        <p class="summary">"{{ plan.summary }}"</p>
+      </div>
+    </section>
+
+
+    <!-- Toggle Buttons -->
+    <div class="toggle-wrapper">
+      <div class="toggle-container">
+        <button class="toggle-btn" [class.active]="viewMode() === 'itinerary'"
+          [class.inactive]="viewMode() !== 'itinerary'" (click)="setView('itinerary')">
+          <lucide-icon name="MapPinIcon" class="weather-icon"></lucide-icon>
+          Itinerary
+        </button>
+
+        <button class="toggle-btn" [class.active]="viewMode() === 'logistics'"
+          [class.inactive]="viewMode() !== 'logistics'" (click)="setView('logistics')">
+          <lucide-icon name="PlaneIcon" class="weather-icon"></lucide-icon>
+          Logistics & Flights
+        </button>
+      </div>
+    </div>
+
+
+
+    <!-- ITINERARY CARD -->
+    <div *ngIf="viewMode() === 'itinerary'" class="card">
+      <!-- DAILY ITINERARY -->
+      <section class="itinerary">
+        <h2>Daily Itinerary</h2>
+
+        <div class="day" *ngFor="let day of plan.dailyItinerary; let i = index">
+          <div class="day-header">
+            <div>
+              <h3>Day {{ day.day }} · {{ day.title }}</h3>
+              <p class="date">{{ day.date | date:'EEEE, MMMM d, y' }}</p>
+            </div>
+
+            <div class="weather-block">
+              <div class="weather-top">
+                <lucide-icon name="CloudSunIcon" class="weather-icon"></lucide-icon>
+                <span class="weather-temp">{{ day.weather.temperature }}</span>
+              </div>
+              <span class="weather-condition">{{ day.weather.condition }}</span>
+            </div>
+          </div>
+
+
+          <div class="timeline">
+            <div class="activity-block" *ngFor="let a of day.activities">
+              <div class="title-row">
+                <lucide-icon *ngIf="a.type == 'travel'" name="PlaneIcon" [ngClass]="a.type"></lucide-icon>
+                <lucide-icon *ngIf="a.type == 'restaurant'" name="UtensilsIcon" [ngClass]="a.type">></lucide-icon>
+                <lucide-icon *ngIf="a.type == 'activity'" name="SparklesIcon" [ngClass]="a.type">></lucide-icon>
+              </div>
+
+              <div class="content">
+                <div class="time"><lucide-icon name="ClockIcon" /> {{ a.time }} <h3>{{ a.name }}</h3>
+                </div>
+
+                <p class="location">{{ a.location }}</p>
+                <p class="description">{{ a.description }}</p>
+                <p class="cost">Est. Cost: {{ a.estimatedCost }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- LOGISTICS CARD -->
+    <div *ngIf="viewMode() === 'logistics'" class="card">
+
+      <!-- FLIGHTS -->
+      <section class="flights">
+        <h2>Flights</h2>
+        <div class="flight-card" *ngFor="let f of plan.flights">
+          <div class="flight-main">
+            <p class="route">{{ f.fromCity }} → {{ f.toCity }}</p>
+            <p class="meta">
+              <span>{{ f.duration }}</span> •
+              <span>{{ f.stops }}</span> •
+              <span>{{ f.estimatedPrice }}</span>
+            </p>
+          </div>
+          <div class="flight-details" *ngFor="let d of f.details">
+            <p class="airline">{{ d.airline }} · {{ d.flightNumber }}</p>
+            <p class="times">
+              {{ d.departureTime }} → {{ d.arrivalTime }}
+            </p>
+            <p class="gate">Gate: {{ d.gate }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOTELS -->
+      <section class="hotels">
+        <h2>Hotels</h2>
+        <div class="hotel-card" *ngFor="let h of plan.hotels">
+          <h3>{{ h.name }}</h3>
+          <p class="location">{{ h.location }}</p>
+          <p class="price">Est. {{ h.estimatedPricePerNight }} / night</p>
+          <p class="description">{{ h.description }}</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SIDE OVERVIEW-->
+  <section class="right-main">
+    <div class="overview-header">
+      Trip Overview
+    </div>
+
+    <div class="overview">
+      <div class="overview-grid">
+        <lucide-icon name="CalendarIcon" class="overview-icon"></lucide-icon>
+        <div class="overview-card">
+          <label>Duration</label>
+          <p>{{ plan.dailyItinerary.length }} days</p>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <lucide-icon name="UsersIcon" class="overview-icon"></lucide-icon>
+        <div class="overview-card">
+          <label>Travelers</label>
+          <p>{{ plan.dailyItinerary.length }} days</p>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <lucide-icon name="WalletIcon" class="overview-icon"></lucide-icon>
+        <div class="overview-card">
+          <label>Budget Level</label>
+          <p>{{ plan.dailyItinerary.length }} days</p>
+        </div>
+      </div>
+
+      <div class="budget">
+        <div class="budget-header">Budget Breakdown</div>
+        <div class="budget-grid">
+          <div class="budget-item">
+            <label>Flights</label>
+            <p>{{ plan.budgetBreakdown.flights }}</p>
+          </div>
+          <div class="budget-item">
+            <label>Hotels</label>
+            <p>{{ plan.budgetBreakdown.hotels }}</p>
+          </div>
+          <div class="budget-item">
+            <label>Food</label>
+            <p>{{ plan.budgetBreakdown.food }}</p>
+          </div>
+          <div class="budget-item">
+            <label>Taxi/Transit</label>
+            <p>{{ plan.budgetBreakdown.transportation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="download()" class="cta">Export Itenary</button>
+  </section>
+
+
+
+
 </div>

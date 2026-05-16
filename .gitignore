@@ -1,5 +1,8 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+.env
+*.env
+
 # Compiled output
 /dist
 /tmp
@@ -44,7 +47,14 @@ Thumbs.db
 *-lock.json
 .vscode/
 .venv/**
+**/.venv/**
 __pycache__/
 *.pyc
 *.pyo
 
+**/.env
+
+*.log
+
+*.json
+ai-agent/.env

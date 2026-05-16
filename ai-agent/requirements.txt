@@ -5,5 +5,8 @@ fastapi
 uvicorn
 requests
 google-genai
-fastapi
 slowapi
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+argon2-cffi

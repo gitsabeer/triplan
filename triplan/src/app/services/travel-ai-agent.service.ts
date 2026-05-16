@@ -3,6 +3,8 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { TokenPair } from '../models/token-pair.model';
 import { Router } from '@angular/router';
+import { getToken, haveValidToken } from '../utils/token-utils';
+import { TravelPlan } from '../models/travel-plan.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,15 @@ import { Router } from '@angular/router';
 export class TravelAiAgentService {
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:8000'; //TODO : read it from env variables or config file instead of hardcoding it here
-  tripPlan = signal<any>(null);
+
 
   //TODO : read it from env variables or config file instead of hardcoding it here
   private key = 'super-secret-key-used-for-api-headers-this-should-be-kept-safe-and-not-shared-publicly';
 
   statusMessages = signal<string[]>([]);
-  finalResult = signal<any | null>(null);
+  tripPlan = signal<TravelPlan | undefined>(undefined);
   isStreaming = signal(false);
   error = signal<string | null>(null);
-  
   router = inject(Router);
 
 
@@ -45,10 +46,7 @@ export class TravelAiAgentService {
 
   
   getFinalTripPlan(payload: any): Observable<any> {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-     //TODO throw error.
-    }
+    const accessToken = getToken();
 
     // Token exists → call API directly
     const headers = {
@@ -58,44 +56,54 @@ export class TravelAiAgentService {
     return this.http.post(`${this.baseUrl}/getTripPlanWithStreaming`, payload, { headers });
   }
 
-  startTripPlanStatusStream(payload: any) {
-    this.isStreaming.set(true);
-    const accessToken = localStorage.getItem('access_token');
-    
-    const URL = `${this.baseUrl}/api/trip/stream-status?token=${accessToken}`;
-    const eventSource = new EventSource(URL);
+  startStream(response:any) {
+    if(response?.code == 0){
+      
+      this.isStreaming.set(true);
+      const accessToken = getToken()    
+      const URL = `${this.baseUrl}/api/trip/stream-status?token=${accessToken}`;
+      const eventSource = new EventSource(URL);
 
-    eventSource.onmessage = (event) => {
-      const msg = event.data;
+      eventSource.onmessage = (event) => {
+        const msg = event.data;
+          console.log(msg)
+        if (msg.includes('<status>')) {
+          const clean = msg
+            .replace('<status>', '')
+            .replace('</status>', '');
 
-      if (msg.includes('<status>')) {
-        const clean = msg
-          .replace('<status>', '')
-          .replace('</status>', '');
+          this.statusMessages.update(list => [...list, clean]);
+        }else if (msg.includes('<final>')) {
+          const jsonStr = msg.replace('<final>', '').replace('</final>', '');
+          try {
+            let parsed =  JSON.parse(jsonStr) as TravelPlan;
+            if (typeof parsed === 'string') {
+              parsed = JSON.parse(parsed);
+            }
+            this.tripPlan.set(parsed)
+          } catch (err) {
+            console.error('Failed to parse final plan JSON', err);
+          }
+          this.isStreaming.set(false);
+          eventSource.close();
+        }
 
-        this.statusMessages.update(list => [...list, clean]);
-      }
+      };
 
-       if (msg.includes('<final>')) {
-        const jsonStr = msg.replace('<final>', '').replace('</final>', '');
-        this.finalResult.set(JSON.parse(jsonStr));
-        this.isStreaming.set(false);
+      eventSource.onerror = () => {
         eventSource.close();
-      }
-
-    };
-
-    eventSource.onerror = () => {
-      eventSource.close();
-      this.error.set('Stream connection failed');
-      this.isStreaming.set(false);
-    };
+        this.error.set('Stream connection failed');
+        this.isStreaming.set(false);
+      };
+    }else{
+       this.error.set(response?.data?.error);
+    }
   }
 
   
 
-  getTripPlan(payload: any): Observable<any> {
-    const accessToken = localStorage.getItem('access_token');
+  getTripPlan(payload: any) {
+    const accessToken = getToken();
     if (!accessToken) {
       //TODO throw error.
     }
@@ -105,6 +113,11 @@ export class TravelAiAgentService {
       'Authorization': `Bearer ${accessToken}`
     };
 
-    return this.http.post(`${this.baseUrl}/getTripPlan`, payload, { headers });
+    this.http.post(`${this.baseUrl}/api/trip/getTripPlan`, payload, { headers }).subscribe({
+      next: (response) =>this.startStream(response),
+      error: () => console.warn('POST failed, but SSE will still run')
+    });
+    
+    
   }
 }
