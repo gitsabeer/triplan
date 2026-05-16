@@ -3,6 +3,10 @@
 .env
 *.env
 
+*.log
+
+/logs/*.log
+
 # Compiled output
 /dist
 /tmp
@@ -58,3 +62,7 @@ __pycache__/
 
 *.json
 ai-agent/.env
+ai-agent/.env
+logs/app.json
+logs/app.log
+triplan/Untitled-1.txt

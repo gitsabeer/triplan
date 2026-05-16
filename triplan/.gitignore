@@ -43,3 +43,8 @@ Thumbs.db
 .editorconfig
 *-lock.json
 .vscode/
+
+.env
+*.env
+
+*.log
