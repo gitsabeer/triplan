@@ -8,5 +8,6 @@ export const routes: Routes = [
         children: TRAVEL_ROUTES
     },
     { path: 'error', component: ErrorPageComponent },
+    { path: '', redirectTo: 'travel', pathMatch: 'full' },
     { path: '**', redirectTo: 'error' }
 ];

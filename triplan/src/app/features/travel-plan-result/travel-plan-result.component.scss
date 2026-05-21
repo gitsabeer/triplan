@@ -37,67 +37,93 @@ $accent-soft: #dbeafe;
 .left-main {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 72%;
   box-sizing: border-box;
   overflow: hidden;
-
 }
 
 .right-main {
   display: flex;
   flex-direction: column;
-  flex: 0 1 300px;
+  flex: 1 1 28%;
+  max-width: 300px;
+  min-width: 180px;
   box-sizing: border-box;
   background: linear-gradient(135deg, #020617, #111827);
   color: #f9fafb;
   border-radius: 1rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  min-width: 150px;
-  align-items: center;
+  padding: 1.8rem 1.5rem 3rem 1.5rem;
   align-self: flex-start;
   height: auto;
-  padding-bottom: 5rem;
 
-  @media (max-width: 1200px) {
-    flex: 0 1 200px;
+  @media (max-width: 1260px) {
+    padding: 1.4rem 1.2rem 2.5rem 1.2rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1050px) {
+    padding: 1.2rem 1rem 2.2rem 1rem;
+  }
+  @media (max-width: 1100px) {
     display: none;
   }
 
   .overview-header {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
     font-family: serif;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
   }
 }
 
 
 
-.back-button {
+.header-container {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  align-items: center;
+  gap: 2.2rem;
+  margin-bottom: 1.2rem;
 
   .bk-btn {
-
     cursor: pointer;
+    width: 3.2rem;
+    height: 3.2rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ::ng-deep svg, svg {
+      width: 3.2rem !important;
+      height: 3.2rem !important;
+    }
 
     &:active {
       transform: translateX(-1px);
       opacity: 0.9;
     }
 
-    transition: background 0.2s ease,
-    transform 0.15s ease;
+    transition: color 0.2s ease, transform 0.15s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateX(-2px);
+      color: $accent;
+      transform: translateX(-3px);
+    }
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      margin: 0 !important;
+      line-height: 1.2;
+    }
+
+    .route {
+      margin: 0.15rem 0 0 0 !important;
     }
   }
 }
@@ -107,9 +133,10 @@ $accent-soft: #dbeafe;
 
 
 .cta {
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
   padding: 12px;
-  opacity: .7;
+  opacity: 0.8;
   background: goldenrod;
   color: #fff;
   border: none;
@@ -118,10 +145,12 @@ $accent-soft: #dbeafe;
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s;
-  margin-top: 20px;
+  margin-top: 3.5rem;
+  margin-bottom: 1.8rem;
 
   &:hover {
     background: gold;
+    opacity: 1;
   }
 }
 
@@ -207,16 +236,18 @@ $accent-soft: #dbeafe;
 .overview {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .overview-grid {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 1rem;
+    padding: 0.5rem 0;
 
     .overview-icon {
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 3.2rem;
+      height: 3.2rem;
+      flex-shrink: 0;
       border-radius: 2rem;
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(8px);
@@ -228,80 +259,83 @@ $accent-soft: #dbeafe;
     }
 
     .overview-card {
-      padding: 1rem 1.2rem;
+      padding: 0.5rem 1rem;
+      flex: 1;
+      min-width: 0;
 
       label {
-        font-size: 0.95rem;
-        /* text-xs */
+        font-size: 0.85rem;
         line-height: 1rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        /* tracking-widest */
-        opacity: 0.5;
+        letter-spacing: 0.08em;
+        opacity: 0.6;
         font-weight: 700;
-        /* bold */
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       p {
         margin-top: 0.25rem;
         font-weight: 700;
         color: white;
+        font-size: 1rem;
       }
     }
   }
 
   .budget {
-    margin-top: 1rem;
-    gap: 0.8rem;
-    padding: 0.4rem;
-    align-items: center;
+    margin-top: 2.2rem;
+    padding-top: 2.2rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
     .budget-header {
       width: 100%;
       margin-bottom: 0.8rem;
-      opacity: .7;
-      align-self: center;
-      align-items: center;
+      opacity: 0.7;
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 1rem;
-      line-height: 1.25rem;
-      letter-spacing: 0.1em
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-align: center;
     }
 
-
     .budget-grid {
-      gap: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
 
       .budget-item {
         background: rgba(255, 255, 255, 0.05);
-        padding: 1rem;
+        padding: 0.8rem 1rem;
         border-radius: 12px;
         backdrop-filter: blur(8px);
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        margin-bottom: 0.3rem;
-
         display: flex;
         flex-direction: row;
-        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
         align-items: center;
-        border: white 5px;
+        gap: 0.4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
 
         label {
-          font-size: 0.80rem;
+          font-size: 0.8rem;
           color: $text-muted;
-          width: 50%;
           font-weight: bold;
           text-transform: uppercase;
         }
 
         p {
-          font-size: 1.125rem;
-          line-height: 1.75rem;
+          font-size: 1.05rem;
           font-weight: 700;
-          opacity: 0.8;
           color: gold;
-          width: 50%;
+          margin: 0;
         }
       }
     }
@@ -674,5 +708,58 @@ $accent-soft: #dbeafe;
   .day-header {
     flex-direction: column;
     gap: 0.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .result {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+  }
+
+  .hero {
+    .hero-main {
+      padding: 1.5rem;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .dates-header {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .total-budget {
+        margin-left: 0;
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    .summary {
+      padding: 1.2rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  .activity-block {
+    padding: 0.8rem;
+    gap: 0.8rem;
+
+    .title-row {
+
+      .activity-icon,
+      .travel,
+      .restaurant,
+      .activity {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+
+  .timeline {
+    margin-left: 0.4rem;
+    padding-left: 1rem;
   }
 }

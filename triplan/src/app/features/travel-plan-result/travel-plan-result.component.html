@@ -6,10 +6,12 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-main">
-        <h1>{{ plan.destination }}</h1>
-        <div class="back-button ">
-          <lucide-icon name="CircleChevronLeftIcon" class="bk-btn " (click)="goBack()"></lucide-icon>
-          <p class="route">{{ plan.fromCity }} → {{ plan.destination }}</p>
+        <div class="header-container">
+          <lucide-icon name="CircleChevronLeftIcon" class="bk-btn" (click)="goBack()"></lucide-icon>
+          <div class="header-content">
+            <h1>{{ plan.destination }}</h1>
+            <p class="route">{{ plan.fromCity }} → {{ plan.destination }}</p>
+          </div>
         </div>
         <div class="dates-header">
           <div class="dates">
@@ -129,7 +131,7 @@
   </div>
 
   <!-- SIDE OVERVIEW-->
-  <section class="right-main">
+  <div class="right-main">
     <div class="overview-header">
       Trip Overview
     </div>
@@ -181,10 +183,8 @@
         </div>
       </div>
     </div>
+
     <button (click)="download()" class="cta">Export Itenary</button>
-  </section>
-
-
-
+  </div>
 
 </div>
