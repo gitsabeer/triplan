@@ -4,10 +4,15 @@
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   box-shadow: var(--shadow-card);
-  min-width: 400px;
+  min-width: 280px;
   max-width: 900px;
   width: 100%;
   margin: 40px auto;
+
+  @media (max-width: 768px) {
+    padding: var(--space-md);
+    margin: 20px auto;
+  }
 
   .card-title {
     font-size: 26px;
