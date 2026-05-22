@@ -97,34 +97,108 @@
 
       <!-- FLIGHTS -->
       <section class="flights">
-        <h2>Flights</h2>
-        <div class="flight-card" *ngFor="let f of plan.flights">
-          <div class="flight-main">
-            <p class="route">{{ f.fromCity }} → {{ f.toCity }}</p>
-            <p class="meta">
-              <span>{{ f.duration }}</span> •
-              <span>{{ f.stops }}</span> •
-              <span>{{ f.estimatedPrice }}</span>
-            </p>
+        <div class="flight-suggestions-header">
+          <lucide-icon name="PlaneIcon" class="flight-header-icon"></lucide-icon>
+          <h2>Flight Suggestions</h2>
+        </div>
+
+        <div class="flight-suggestion-item" *ngFor="let f of plan.flights">
+          <!-- TOP ROW INFO -->
+          <div class="flight-info-row">
+            <!-- ROUTE COLUMN -->
+            <div class="info-col route-col">
+              <span class="col-label">Route</span>
+              <h3 class="route-title">{{ f.fromCity }} → {{ f.toCity }}</h3>
+              <div class="stop-badge">
+                <lucide-icon name="ClockIcon" class="stop-badge-icon"></lucide-icon>
+                <span>{{ f.stops }}</span>
+              </div>
+            </div>
+
+            <!-- DURATION COLUMN -->
+            <div class="info-col duration-col">
+              <span class="col-label">Duration</span>
+              <span class="duration-val">{{ f.duration }}</span>
+            </div>
+
+            <!-- PRICE COLUMN -->
+            <div class="info-col price-col">
+              <span class="col-label">Est. Price</span>
+              <span class="price-val" [class.included]="f.estimatedPrice.toLowerCase().includes('included')">
+                {{ formatPrice(f.estimatedPrice) }}
+              </span>
+              <a href="#" class="book-flight-btn" (click)="$event.preventDefault()">
+                <lucide-icon name="ExternalLinkIcon" class="btn-external-icon"></lucide-icon>
+                <span>Book Flight</span>
+              </a>
+            </div>
           </div>
-          <div class="flight-details" *ngFor="let d of f.details">
-            <p class="airline">{{ d.airline }} · {{ d.flightNumber }}</p>
-            <p class="times">
-              {{ d.departureTime }} → {{ d.arrivalTime }}
-            </p>
-            <p class="gate">Gate: {{ d.gate }}</p>
+
+          <!-- NESTED CARD FOR DETAIL -->
+          <div class="flight-detail-card" *ngFor="let d of f.details">
+            <div class="detail-top-row">
+              <div class="airline-info">
+                <span class="airline-name">{{ d.airline }}</span>
+                <span class="flight-number">{{ d.flightNumber }}</span>
+              </div>
+              <div class="gate-badge">
+                {{ formatGate(d.gate) }}
+              </div>
+            </div>
+
+            <div class="detail-bottom-row">
+              <!-- DEPART -->
+              <div class="time-block depart-block">
+                <span class="time-val">{{ formatTime(d.departureTime) }}</span>
+                <span class="time-label">Depart</span>
+              </div>
+
+              <!-- CONNECTION LINE -->
+              <div class="connection-timeline">
+                <div class="timeline-line"></div>
+                <lucide-icon name="PlaneIcon" class="timeline-plane-icon"></lucide-icon>
+                <div class="timeline-line"></div>
+              </div>
+
+              <!-- ARRIVE -->
+              <div class="time-block arrive-block">
+                <span class="time-val">{{ formatTime(d.arrivalTime) }}</span>
+                <span class="time-label">Arrive</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- HOTELS -->
       <section class="hotels">
-        <h2>Hotels</h2>
         <div class="hotel-card" *ngFor="let h of plan.hotels">
-          <h3>{{ h.name }}</h3>
-          <p class="location">{{ h.location }}</p>
-          <p class="price">Est. {{ h.estimatedPricePerNight }} / night</p>
-          <p class="description">{{ h.description }}</p>
+          <!-- Recommended Stays Header -->
+          <div class="hotel-header-inside">
+            <lucide-icon name="HotelIcon" class="hotel-header-icon"></lucide-icon>
+            <h4>Recommended Stays</h4>
+          </div>
+
+          <!-- Title & Price Badge -->
+          <div class="hotel-title-row">
+            <h3>{{ h.name }}</h3>
+            <span class="hotel-price-badge">{{ formatHotelPrice(h.estimatedPricePerNight) }}</span>
+          </div>
+
+          <!-- Description -->
+          <p class="hotel-description">{{ h.description }}</p>
+
+          <!-- Location Row -->
+          <div class="hotel-location-row">
+            <lucide-icon name="MapPinIcon" class="hotel-location-icon"></lucide-icon>
+            <span>{{ h.location }}</span>
+          </div>
+
+          <!-- Book Stay Action Button -->
+          <a href="#" class="book-stay-btn" (click)="$event.preventDefault()">
+            <lucide-icon name="ExternalLinkIcon" class="btn-external-icon"></lucide-icon>
+            <span>Book Stay</span>
+          </a>
         </div>
       </section>
     </div>
