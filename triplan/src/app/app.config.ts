@@ -23,7 +23,11 @@ import {
   UsersIcon,
   UtensilsIcon,
   WalletIcon,
-  ExternalLinkIcon
+  ExternalLinkIcon,
+  SettingsIcon,
+  TrashIcon,
+  BriefcaseIcon,
+  UserIcon
 } from 'lucide-angular';
 
 export function clearJwtOnStartup() {
@@ -36,7 +40,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideAppInitializer(clearJwtOnStartup),
-    importProvidersFrom(LucideAngularModule.pick({ CloudSunIcon, ClockIcon, MapPinIcon, PlaneIcon, HotelIcon, CalendarIcon, UsersIcon, WalletIcon, SparklesIcon, CircleChevronLeftIcon, LogOutIcon, UtensilsIcon, ExternalLinkIcon })),
+    importProvidersFrom(LucideAngularModule.pick({ CloudSunIcon, ClockIcon, MapPinIcon, PlaneIcon, HotelIcon, CalendarIcon, UsersIcon, WalletIcon, SparklesIcon, CircleChevronLeftIcon, LogOutIcon, UtensilsIcon, ExternalLinkIcon, SettingsIcon, TrashIcon, BriefcaseIcon, UserIcon })),
     { provide: ErrorHandler, useClass: GlobalErrorHandler }]
 };
 

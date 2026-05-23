@@ -1,12 +1,12 @@
 // travel-plan-result.component.scss
 
-$result-bg: #ffffff;
-$card-bg: #ffffff;
-$border-subtle: #e0e0e5;
-$text-main: #111827;
-$text-muted: #6b7280;
-$accent: #2563eb;
-$accent-soft: #dbeafe;
+$result-bg: var(--color-bg, #ffffff);
+$card-bg: var(--color-card-bg, #ffffff);
+$border-subtle: var(--color-border, #e0e0e5);
+$text-main: var(--color-text, #111827);
+$text-muted: var(--color-muted, #6b7280);
+$accent: var(--color-primary, #2563eb);
+$accent-soft: var(--color-accent-soft, #dbeafe);
 
 .result {
   align-self: center;
@@ -382,7 +382,7 @@ $accent-soft: #dbeafe;
       font-size: 1.8rem;
       font-family: serif;
       font-weight: bold;
-      color: #111827;
+      color: $text-main;
     }
   }
 
@@ -421,7 +421,7 @@ $accent-soft: #dbeafe;
         .route-title {
           font-size: 1.4rem;
           font-weight: 700;
-          color: #111827;
+          color: $text-main;
           margin: 0.1rem 0 0.4rem 0 !important;
         }
 
@@ -455,7 +455,7 @@ $accent-soft: #dbeafe;
         .duration-val {
           font-size: 1.15rem;
           font-weight: 700;
-          color: #111827;
+          color: $text-main;
           margin-top: 0.2rem;
         }
       }
@@ -637,8 +637,8 @@ $accent-soft: #dbeafe;
   padding-top: 2rem;
 
   .hotel-card {
-    background: #ffffff;
-    border: 1px solid #e7e5e4;
+    background: $card-bg;
+    border: 1px solid $border-subtle;
     border-radius: 1.25rem;
     padding: 1.75rem 2rem;
     margin-bottom: 2rem;
@@ -669,7 +669,7 @@ $accent-soft: #dbeafe;
         font-size: 1.4rem;
         font-family: serif;
         font-weight: bold;
-        color: #111827;
+        color: $text-main;
       }
     }
 
@@ -689,7 +689,7 @@ $accent-soft: #dbeafe;
         margin: 0 !important;
         font-size: 1.4rem;
         font-weight: 700;
-        color: #111827;
+        color: $text-main;
       }
 
       .hotel-price-badge {
@@ -739,8 +739,8 @@ $accent-soft: #dbeafe;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      border: 1px solid #fef3c7;
-      background: #ffffff;
+      border: 1px solid $border-subtle;
+      background: $card-bg;
       color: #d97706;
       padding: 0.65rem 1.5rem;
       border-radius: 999px;
@@ -967,8 +967,8 @@ $accent-soft: #dbeafe;
   gap: 0.25rem;
   padding: 0.15rem;
   border-radius: 20px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb; // prevent overflow on small screens
+  border: 1px solid $border-subtle;
+  background: var(--color-tag-bg, #f3f4f6); // prevent overflow on small screens
 }
 
 .toggle-btn {
@@ -980,24 +980,31 @@ $accent-soft: #dbeafe;
   border-radius: 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: 0.15s ease;
-  background: #e5e7eb; // light grey
-  border: 1px solid #e5e7eb; // soft border
-  color: #374151; // slate-700
-  box-shadow: 0 1px 2px rgba(65, 64, 64, 0.05); // slight lift
+  transition: all 0.15s ease;
+  background: transparent;
+  border: 1px solid transparent;
+  color: $text-muted;
+  box-shadow: none;
 
 
   &.active {
-    color: #111827;
-
-
-    transform: translateY(1px);
+    color: $accent;
+    background: $card-bg;
+    border: 1px solid $border-subtle;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
   }
 
   &.inactive {
-    color: black;
-    border: 0px;
+    color: $text-muted;
+    border: 1px solid transparent;
     background: transparent;
+    box-shadow: none;
+    
+    &:hover {
+      color: $text-main;
+      background: rgba(128, 128, 128, 0.05);
+    }
   }
 
   .icon {

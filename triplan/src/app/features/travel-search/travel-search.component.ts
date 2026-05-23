@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TravelAiAgentService } from '../../services/travel-ai-agent.service';
+import { AppStateService } from '../../services/app-state.service';
 
 @Component({
   selector: 'app-travel-search',
@@ -13,6 +14,7 @@ import { TravelAiAgentService } from '../../services/travel-ai-agent.service';
 })
 export class TravelSearchComponent implements OnInit {
   form!: FormGroup;
+  appState = inject(AppStateService);
 
   interests = [
     'Culture',

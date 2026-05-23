@@ -60,3 +60,4 @@ __pycache__/
 *.log
 logs/
 triplan/Untitled-1.txt
+ai-agent/.env

@@ -1,0 +1,540 @@
+// travel-profile.component.scss
+
+$result-bg: var(--color-bg, #ffffff);
+$card-bg: var(--color-card-bg, #ffffff);
+$border-subtle: var(--color-border, #e0e0e5);
+$text-main: var(--color-text, #111827);
+$text-muted: var(--color-muted, #6b7280);
+$accent: var(--color-primary, #2563eb);
+$accent-soft: var(--color-accent-soft, #dbeafe);
+
+.profile-container {
+  min-height: 100vh;
+  background: $result-bg;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.profile-banner {
+  height: 200px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  width: 100%;
+}
+
+.profile-content {
+  max-width: 1200px;
+  margin: -60px auto 0;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.back-btn-container {
+  display: flex;
+  margin-bottom: 2rem;
+  margin-top: -3.5rem;
+  
+  @media (max-width: 768px) {
+    margin-top: -3rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  &:active {
+    transform: translateX(-1px);
+  }
+
+  .back-btn-icon {
+    width: 18px;
+    height: 18px;
+    ::ng-deep svg, svg {
+      width: 18px !important;
+      height: 18px !important;
+    }
+  }
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* CARD SYSTEM OVERRIDE */
+.card {
+  box-sizing: border-box;
+  background: $card-bg;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  border: 1px solid $border-subtle;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* LEFT SIDE: MAIN PROFILE CARD */
+.profile-main-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.profile-avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5.5rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: $accent-soft;
+  color: #1e40af;
+  border: 4px solid $card-bg;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+}
+
+.edit-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid $border-subtle;
+  background: $card-bg;
+  color: $text-main;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $accent-soft;
+    color: #1e40af;
+    border-color: transparent;
+    transform: translateY(-1px);
+  }
+
+  lucide-icon {
+    width: 14px;
+    height: 14px;
+    ::ng-deep svg, svg {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+}
+
+.success-toast {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.profile-details-view {
+  width: 100%;
+  text-align: center;
+
+  .user-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: $text-main;
+    margin: 0 0 0.25rem;
+  }
+
+  .user-email {
+    font-size: 0.9rem;
+    color: $text-muted;
+    margin: 0;
+  }
+
+  .profile-divider {
+    border: 0;
+    border-top: 1px dashed $border-subtle;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+
+  .detail-section {
+    text-align: left;
+    margin-bottom: 1.25rem;
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: $text-muted;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-value {
+      font-size: 0.95rem;
+      color: $text-main;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .biography {
+      white-space: pre-line;
+    }
+
+    .tag-value {
+      display: inline-block;
+      background: $accent-soft;
+      color: #1e40af;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* EDIT PROFILE FORM */
+.profile-edit-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      color: $text-muted;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.7rem 0.9rem;
+      border-radius: 0.75rem;
+      border: 1px solid $border-subtle;
+      font-size: 0.9rem;
+      color: $text-main;
+      background-color: $card-bg;
+      transition: all 0.2s ease;
+      outline: none;
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+
+      &:focus {
+        border-color: $accent;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+  }
+
+  .save-profile-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: $accent;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: $border-subtle;
+      color: $text-muted;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+/* RIGHT SIDE: TRIP LISTS */
+.trip-list-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  .list-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $accent;
+    ::ng-deep svg, svg {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $text-main;
+    margin: 0;
+  }
+
+  .trip-count-badge {
+    background: $accent-soft;
+    color: #1e40af;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+}
+
+.trip-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  border-radius: 1.25rem;
+  border: 1px dashed $border-subtle;
+  color: $text-muted;
+  text-align: center;
+  background: $card-bg;
+
+  .empty-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    ::ng-deep svg, svg {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+.trip-item-card {
+  padding: 1.5rem;
+  margin-bottom: 0;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08), 0 10px 15px -6px rgba(0, 0, 0, 0.05);
+  }
+
+  .trip-item-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  .trip-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $text-main;
+      margin: 0;
+    }
+
+    .trip-dates {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: $text-muted;
+      margin: 0;
+
+      .inline-icon {
+        width: 14px;
+        height: 14px;
+        ::ng-deep svg, svg {
+          width: 14px !important;
+          height: 14px !important;
+        }
+      }
+    }
+
+    .trip-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: #f3f4f6;
+        color: #4b5563;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+
+        .inline-icon {
+          width: 12px;
+          height: 12px;
+          color: #6b7280;
+          ::ng-deep svg, svg {
+            width: 12px !important;
+            height: 12px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .trip-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.8rem;
+
+    @media (max-width: 600px) {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      border-top: 1px dashed $border-subtle;
+      padding-top: 0.8rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+
+      &.upcoming {
+        background: #e0f2fe;
+        color: #0369a1;
+      }
+
+      &.completed {
+        background: #f3f4f6;
+        color: #4b5563;
+      }
+    }
+
+    .delete-trip-btn {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: #fee2e2;
+        color: #ef4444;
+      }
+
+      lucide-icon {
+        width: 18px;
+        height: 18px;
+        ::ng-deep svg, svg {
+          width: 18px !important;
+          height: 18px !important;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,8 @@ import {
   LucideAngularModule
 } from 'lucide-angular';
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'
+import jsPDF from 'jspdf';
+import { AppStateService } from '../../services/app-state.service';
 
 @Component({
   selector: 'app-travel-plan-result',
@@ -19,6 +20,7 @@ export class TravelPlanResultComponent implements OnInit {
   @ViewChild('pdfContent') pdfContent!: ElementRef;
 
   agent = inject(TravelAiAgentService);
+  appState = inject(AppStateService);
   plan: TravelPlan | undefined;
   viewMode = signal<'itinerary' | 'logistics'>('itinerary');
 

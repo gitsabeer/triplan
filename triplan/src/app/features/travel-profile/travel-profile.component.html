@@ -1,0 +1,152 @@
+<div class="profile-container">
+  <!-- BANNER -->
+  <div class="profile-banner"></div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="profile-content">
+    <!-- BACK BUTTON -->
+    <div class="back-btn-container">
+      <button class="back-btn" (click)="goBack()" [attr.title]="appState.language() === 'es' ? 'Volver' : appState.language() === 'ja' ? '戻る' : 'Go Back'">
+        <lucide-icon name="CircleChevronLeftIcon" class="back-btn-icon"></lucide-icon>
+        <span>{{ appState.language() === 'es' ? 'Volver' : appState.language() === 'ja' ? '戻る' : 'Back' }}</span>
+      </button>
+    </div>
+
+    <div class="profile-grid">
+
+      <!-- LEFT SIDE: PROFILE CARD / EDIT PROFILE -->
+      <div class="profile-card-col">
+        <div class="card profile-main-card">
+
+          <div class="profile-avatar-container">
+            <div class="avatar-circle">
+              <span>{{ appState.userProfile().name.charAt(0) }}</span>
+            </div>
+            <button class="edit-toggle-btn" (click)="toggleEdit()">
+              <lucide-icon [name]="isEditing ? 'CircleChevronLeftIcon' : 'UserIcon'"></lucide-icon>
+              <span>{{ isEditing ? (appState.language() === 'es' ? 'Cancelar' : appState.language() === 'ja' ? 'キャンセル' :
+                'Cancel') : (appState.language() === 'es' ? 'Editar Perfil' : appState.language() === 'ja' ? 'プロファイル編集'
+                : 'Edit Profile') }}</span>
+            </button>
+          </div>
+
+          <!-- SUCCESS TOAST -->
+          <div class="success-toast" *ngIf="successMessage">
+            {{ successMessage }}
+          </div>
+
+          <!-- READ-ONLY VIEW -->
+          <div class="profile-details-view" *ngIf="!isEditing">
+            <h2 class="user-name">{{ appState.userProfile().name }}</h2>
+            <p class="user-email">{{ appState.userProfile().email }}</p>
+
+            <hr class="profile-divider" />
+
+            <div class="detail-section">
+              <span class="section-label">{{ appState.language() === 'es' ? 'BIOGRAFÍA' : appState.language() === 'ja' ?
+                '自己紹介' : 'BIOGRAPHY' }}</span>
+              <p class="section-value biography">{{ appState.userProfile().bio }}</p>
+            </div>
+
+            <div class="detail-section">
+              <span class="section-label">{{ appState.language() === 'es' ? 'ESTILO DE VIAJE FAVORITO' :
+                appState.language() === 'ja' ? 'お気に入りの旅行スタイル' : 'FAVORITE TRAVEL STYLE' }}</span>
+              <p class="section-value tag-value">{{ appState.userProfile().favorites }}</p>
+            </div>
+          </div>
+
+          <!-- EDIT VIEW -->
+          <form [formGroup]="profileForm" (ngSubmit)="onSave()" class="profile-edit-form" *ngIf="isEditing">
+            <div class="form-group">
+              <label>{{ appState.language() === 'es' ? 'Nombre completo' : appState.language() === 'ja' ? 'フルネーム' :
+                'Full Name' }}</label>
+              <input type="text" formControlName="name" placeholder="e.g. Siji Sabeer" />
+            </div>
+
+            <div class="form-group">
+              <label>{{ appState.language() === 'es' ? 'Correo electrónico' : appState.language() === 'ja' ? 'メールアドレス' :
+                'Email Address' }}</label>
+              <input type="email" formControlName="email" placeholder="e.g. siji@triplan.ai" />
+            </div>
+
+            <div class="form-group">
+              <label>{{ appState.language() === 'es' ? 'Estilo de viaje preferido' : appState.language() === 'ja' ?
+                '好みの旅行スタイル' : 'Preferred Travel Style' }}</label>
+              <input type="text" formControlName="favorites" placeholder="e.g. Hiking, Culinary, Tech" />
+            </div>
+
+            <div class="form-group">
+              <label>{{ appState.language() === 'es' ? 'Sobre mí' : appState.language() === 'ja' ? '自己紹介' : 'Bio / About
+                Me' }}</label>
+              <textarea formControlName="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+            </div>
+
+            <button type="submit" class="save-profile-btn" [disabled]="profileForm.invalid">
+              {{ appState.language() === 'es' ? 'Guardar Cambios' : appState.language() === 'ja' ? '変更を保存' : 'Save
+              Changes' }}
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: USER ITEMS (TRIP LIST) -->
+      <div class="profile-items-col">
+        <div class="trip-list-header">
+          <lucide-icon name="BriefcaseIcon" class="list-icon"></lucide-icon>
+          <h2>{{ appState.language() === 'es' ? 'Mis Planes de Viaje' : appState.language() === 'ja' ? '保存された旅程' : 'My
+            Travel Plans' }}</h2>
+          <span class="trip-count-badge">{{ appState.userItems().length }}</span>
+        </div>
+
+        <!-- TRIP ITEMS LOOP -->
+        <div class="trip-items-container">
+
+          <div class="empty-state" *ngIf="appState.userItems().length === 0">
+            <lucide-icon name="MapPinIcon" class="empty-icon"></lucide-icon>
+            <p>{{ appState.language() === 'es' ? 'No tienes planes de viaje guardados.' : appState.language() === 'ja' ?
+              '保存された旅程はまだありません。' : 'You do not have any saved travel plans yet.' }}</p>
+          </div>
+
+          <div class="card trip-item-card" *ngFor="let item of appState.userItems()">
+            <div class="trip-item-body">
+              <div class="trip-info">
+                <h3>{{ item.title }}</h3>
+                <p class="trip-dates">
+                  <lucide-icon name="CalendarIcon" class="inline-icon"></lucide-icon>
+                  <span>{{ item.date }}</span>
+                </p>
+                <div class="trip-meta">
+                  <span class="meta-pill">
+                    <lucide-icon name="UsersIcon" class="inline-icon"></lucide-icon>
+                    <span>{{ item.travelers }} {{ item.travelers === 1 ? (appState.language() === 'es' ? 'viajero' :
+                      appState.language() === 'ja' ? '人' : 'traveler') : (appState.language() === 'es' ? 'viajeros' :
+                      appState.language() === 'ja' ? '人' : 'travelers') }}</span>
+                  </span>
+                  <span class="meta-pill">
+                    <lucide-icon name="WalletIcon" class="inline-icon"></lucide-icon>
+                    <span>{{ item.budget }}</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="trip-actions">
+                <span class="status-badge" [class.upcoming]="item.status === 'Upcoming'"
+                  [class.completed]="item.status === 'Completed'">
+                  {{ item.status === 'Upcoming' ? (appState.language() === 'es' ? 'Próximo' : appState.language() ===
+                  'ja' ? '予定' : 'Upcoming') : (appState.language() === 'es' ? 'Completado' : appState.language() ===
+                  'ja' ? '完了' : 'Completed') }}
+                </span>
+                <button class="delete-trip-btn" (click)="onDeleteTrip(item.id)" title="Delete Itinerary">
+                  <lucide-icon name="TrashIcon"></lucide-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

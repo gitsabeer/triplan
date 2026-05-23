@@ -1,1 +1,63 @@
-<router-outlet></router-outlet>
+<header class="app-bar">
+  <div class="app-bar-container">
+    <!-- Logo -->
+    <div class="logo-group" (click)="goHome()">
+      <lucide-icon name="SparklesIcon" class="logo-icon"></lucide-icon>
+      <span class="logo-title">Triplan</span>
+    </div>
+    
+    <!-- Controls (Settings, Profile) -->
+    <div class="action-group">
+      <!-- Settings Dropdown Wrapper -->
+      <div class="dropdown-wrapper" #settingsDropdown>
+        <button class="icon-btn" (click)="toggleSettings($event)" [attr.title]="appState.language() === 'es' ? 'Ajustes' : appState.language() === 'ja' ? '設定' : 'Settings'">
+          <lucide-icon name="SettingsIcon"></lucide-icon>
+        </button>
+        
+        <!-- Settings Dropdown Popover -->
+        <div class="dropdown-menu" *ngIf="showSettings()">
+          <div class="dropdown-header">
+            {{ appState.language() === 'es' ? 'Ajustes' : appState.language() === 'ja' ? '設定' : 'Settings' }}
+          </div>
+          
+          <!-- Theme Setting Item -->
+          <div class="menu-item">
+            <span class="item-label">
+              {{ appState.language() === 'es' ? 'Tema' : appState.language() === 'ja' ? 'テーマ' : 'Theme' }}
+            </span>
+            <div class="theme-toggle">
+              <button class="toggle-choice" [class.active]="theme() === 'normal'" (click)="setTheme('normal')">
+                {{ appState.language() === 'es' ? 'Normal' : appState.language() === 'ja' ? '通常' : 'Normal' }}
+              </button>
+              <button class="toggle-choice" [class.active]="theme() === 'dark'" (click)="setTheme('dark')">
+                {{ appState.language() === 'es' ? 'Oscuro' : appState.language() === 'ja' ? 'ダーク' : 'Dark' }}
+              </button>
+            </div>
+          </div>
+          
+          <!-- Language Setting Item -->
+          <div class="menu-item">
+            <span class="item-label">
+              {{ appState.language() === 'es' ? 'Idioma' : appState.language() === 'ja' ? '言語' : 'Language' }}
+            </span>
+            <select [ngModel]="language()" (ngModelChange)="onLanguageChange($event)" class="lang-select">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Profile Button -->
+      <button class="icon-btn profile-btn" (click)="navigateToProfile()" [attr.title]="appState.language() === 'es' ? 'Perfil de usuario' : appState.language() === 'ja' ? 'ユーザープロファイル' : 'User Profile'">
+        <lucide-icon name="UsersIcon"></lucide-icon>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Router Content -->
+<main class="app-main-layout">
+  <router-outlet></router-outlet>
+</main>
