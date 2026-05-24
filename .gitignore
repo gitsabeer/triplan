@@ -61,3 +61,5 @@ __pycache__/
 logs/
 triplan/Untitled-1.txt
 ai-agent/.env
+TODO
+*.cache

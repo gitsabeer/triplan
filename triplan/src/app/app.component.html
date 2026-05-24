@@ -2,7 +2,7 @@
   <div class="app-bar-container">
     <!-- Logo -->
     <div class="logo-group" (click)="goHome()">
-      <lucide-icon name="SparklesIcon" class="logo-icon"></lucide-icon>
+      <img src="triplan-logo.svg" class="logo-icon" alt="Triplan Logo" />
       <span class="logo-title">Triplan</span>
     </div>
     
@@ -31,6 +31,21 @@
               </button>
               <button class="toggle-choice" [class.active]="theme() === 'dark'" (click)="setTheme('dark')">
                 {{ appState.language() === 'es' ? 'Oscuro' : appState.language() === 'ja' ? 'ダーク' : 'Dark' }}
+              </button>
+            </div>
+          </div>
+          
+          <!-- Data Mode Setting Item (Dev Only) -->
+          <div class="menu-item" *ngIf="isDevMode">
+            <span class="item-label">
+              {{ appState.language() === 'es' ? 'Modo de Datos' : appState.language() === 'ja' ? 'データモード' : 'Data Mode' }}
+            </span>
+            <div class="theme-toggle">
+              <button class="toggle-choice" [class.active]="!agent.isDemoMode()" (click)="agent.isDemoMode.set(false)">
+                {{ appState.language() === 'es' ? 'En Vivo' : appState.language() === 'ja' ? 'ライブ' : 'Live' }}
+              </button>
+              <button class="toggle-choice" [class.active]="agent.isDemoMode()" (click)="agent.isDemoMode.set(true)">
+                {{ appState.language() === 'es' ? 'Demo' : appState.language() === 'ja' ? 'デモ' : 'Demo' }}
               </button>
             </div>
           </div>

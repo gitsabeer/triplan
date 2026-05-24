@@ -9,6 +9,7 @@ import {
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { AppStateService } from '../../services/app-state.service';
+import { SearchData } from '../../models/search-data.model';
 
 @Component({
   selector: 'app-travel-plan-result',
@@ -24,12 +25,15 @@ export class TravelPlanResultComponent implements OnInit {
   appState = inject(AppStateService);
   router = inject(Router);
   plan: TravelPlan | undefined;
+  searchData: SearchData | undefined;
   viewMode = signal<'itinerary' | 'logistics'>('itinerary');
+
 
   constructor(private location: Location) { }
 
   ngOnInit() {
     this.plan = this.agent.tripPlan();
+    this.searchData = this.agent.searchData();
     if (!this.plan) {
       this.router.navigate(['/travel']);
     }

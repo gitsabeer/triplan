@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { AppStateService } from './services/app-state.service';
+import { environment } from '../environments/environment';
+import { TravelAiAgentService } from './services/travel-ai-agent.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +17,10 @@ import { AppStateService } from './services/app-state.service';
 export class AppComponent {
   appState = inject(AppStateService);
   router = inject(Router);
+  agent = inject(TravelAiAgentService);
 
   showSettings = signal(false);
+  isDevMode = !environment.production;
 
   // Reference to dropdown for click-outside detection
   @ViewChild('settingsDropdown') settingsDropdown!: ElementRef;

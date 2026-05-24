@@ -25,6 +25,7 @@ export class TravelAiAgentService {
   searchData = signal<SearchData | undefined>(undefined);
   isStreaming = signal(false);
   error = signal<string | null>(null);
+  isDemoMode = signal(false);
   router = inject(Router);
 
 

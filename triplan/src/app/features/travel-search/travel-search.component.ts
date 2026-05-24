@@ -118,7 +118,7 @@ export class TravelSearchComponent implements OnInit {
   }
 
   onSearch() {
-    if (this.form.invalid) {
+    if (this.form.invalid && !this.agent.isDemoMode()) {
       this.form.markAllAsTouched();
       return;
     }

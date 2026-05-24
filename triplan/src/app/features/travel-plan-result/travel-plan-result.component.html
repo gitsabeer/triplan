@@ -219,19 +219,19 @@
         </div>
       </div>
 
-      <div class="overview-grid">
+      <div class="overview-grid" *ngIf="searchData">
         <lucide-icon name="UsersIcon" class="overview-icon"></lucide-icon>
         <div class="overview-card">
           <label>Travelers</label>
-          <p>{{ plan.dailyItinerary.length }} days</p>
+          <p>{{ searchData.travelers }}</p>
         </div>
       </div>
 
-      <div class="overview-grid">
+      <div class="overview-grid" *ngIf="searchData">
         <lucide-icon name="WalletIcon" class="overview-icon"></lucide-icon>
         <div class="overview-card">
           <label>Budget Level</label>
-          <p>{{ plan.dailyItinerary.length }} days</p>
+          <p>{{ searchData.budget }}</p>
         </div>
       </div>
 

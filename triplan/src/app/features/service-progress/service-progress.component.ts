@@ -27,7 +27,6 @@ export class ServiceProgressComponent implements OnInit {
   ];
 
   currentStep = 0;
-  result: any = null;
   interval: any;
 
 
@@ -37,9 +36,7 @@ export class ServiceProgressComponent implements OnInit {
     effect(() => {
       const result = this.agent.tripPlan();
       if (result) {
-        clearInterval(this.interval);
-        this.router.navigate(['/travel/result'], { replaceUrl: true });
-
+        this.processResult(result);
       }
     });
 
@@ -60,27 +57,23 @@ export class ServiceProgressComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.runProgress();
-    //this.runProgressDemo();
+    if (this.agent.isDemoMode()) {
+      this.runProgressDemo();
+    } else {
+      this.runProgress();
+    }
   }
 
   reportError(err: any) {
-    this.result = { details: 'Failed to generate trip plan.', error: err };
+    const result = { details: 'Failed to generate trip plan.', error: err };
     // this.agent.tripPlan.set(this.result);  
-    sessionStorage.setItem('error', JSON.stringify(this.result));
+    sessionStorage.setItem('error', JSON.stringify(result));
     this.router.navigate(['/error'], { replaceUrl: true });
   }
 
   processResult(result: any) {
-    this.agent.tripPlan.set(result);   // store result
-    this.result = result;
     clearInterval(this.interval);
-    if (result?.code == 0) {
-      this.router.navigate(['/travel/result'], { replaceUrl: true });
-    } else {
-      const err = result?.data?.error ? result.data.error : 'Service Error'
-      this.reportError(err);
-    }
+    this.router.navigate(['/travel/result'], { replaceUrl: true });
 
   }
 
@@ -95,7 +88,6 @@ export class ServiceProgressComponent implements OnInit {
   }
 
   getTripPlan() {
-    this.result = null; // reset result for new run
     const searchVal = this.agent.searchData();
     const dataObj = searchVal ? searchVal.createPayload() : this.sampleSearchData;
     const payload = JSON.stringify(dataObj);
@@ -104,7 +96,6 @@ export class ServiceProgressComponent implements OnInit {
 
   runProgressDemo() {
     this.agent.getSampleResponse();
-    this.router.navigate(['/travel/result'], { replaceUrl: true });
   }
 
   runProgress() {
