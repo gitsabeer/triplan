@@ -24,6 +24,9 @@
           <mat-error *ngIf="form.get('to')?.hasError('required')">
             Destination is required
           </mat-error>
+          <mat-error *ngIf="form.get('to')?.hasError('sameCities')">
+            Destination must be different from departure city
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -54,6 +57,9 @@
             </mat-error>
             <mat-error *ngIf="form.get('returnDate')?.hasError('matDatepickerMin')">
               Return date must be after departure date
+            </mat-error>
+            <mat-error *ngIf="form.get('returnDate')?.hasError('sameDates')">
+              Return date must be different from departure date
             </mat-error>
           </mat-form-field>
         </div>

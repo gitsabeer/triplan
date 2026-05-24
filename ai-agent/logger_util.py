@@ -19,6 +19,14 @@ try:
     COLOR_ENABLED = True
 except ImportError:
     COLOR_ENABLED = False
+    # Define dummy fallback classes to prevent NameErrors
+    class DummyColor:
+        def __getattr__(self, name):
+            return ""
+        def __add__(self, other):
+            return ""
+    Fore = DummyColor()
+    Style = DummyColor()
 
 audit_logger = None
 

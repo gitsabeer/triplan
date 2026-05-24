@@ -39,18 +39,25 @@ import { Router } from '@angular/router';
   `]
 })
 export class ErrorPageComponent {
-  message = {details:'Unexpected error occurred.' ,error :"Something went wrong"};
+  message = { details: 'Unexpected error occurred.', error: "Something went wrong" };
 
   constructor(private router: Router) {
     const nav = this.router.getCurrentNavigation();
-    this.message =  nav?.extras?.state 
-         ?? JSON.parse(sessionStorage.getItem('error') || '{}');
+    const storedError = sessionStorage.getItem('error');
+
+    if (nav?.extras?.state) {
+      this.message = nav.extras.state as any;
+    } else if (storedError) {
+      this.message = JSON.parse(storedError);
+    } else {
+      this.router.navigate(['/travel']);
+    }
   }
 
-  
+
 
   reload() {
-     this.router.navigate(['/travel'], {
-        });
+    this.router.navigate(['/travel'], {
+    });
   }
 }

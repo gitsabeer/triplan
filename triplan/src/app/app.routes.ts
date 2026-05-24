@@ -9,5 +9,5 @@ export const routes: Routes = [
     },
     { path: 'error', component: ErrorPageComponent },
     { path: '', redirectTo: 'travel', pathMatch: 'full' },
-    { path: '**', redirectTo: 'error' }
+    { path: '**', redirectTo: 'travel' }
 ];

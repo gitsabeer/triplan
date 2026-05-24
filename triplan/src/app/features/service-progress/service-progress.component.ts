@@ -38,7 +38,7 @@ export class ServiceProgressComponent implements OnInit {
       const result = this.agent.tripPlan();
       if (result) {
         clearInterval(this.interval);
-        this.router.navigate(['/travel/result']);
+        this.router.navigate(['/travel/result'], { replaceUrl: true });
 
       }
     });
@@ -60,15 +60,15 @@ export class ServiceProgressComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.runProgress();
-    this.runProgressDemo();
+    this.runProgress();
+    //this.runProgressDemo();
   }
 
   reportError(err: any) {
-    this.result = { details: 'Failed to generate trip plan. Please try again.', error: err };
+    this.result = { details: 'Failed to generate trip plan.', error: err };
     // this.agent.tripPlan.set(this.result);  
     sessionStorage.setItem('error', JSON.stringify(this.result));
-    this.router.navigate(['/error']);
+    this.router.navigate(['/error'], { replaceUrl: true });
   }
 
   processResult(result: any) {
@@ -76,7 +76,7 @@ export class ServiceProgressComponent implements OnInit {
     this.result = result;
     clearInterval(this.interval);
     if (result?.code == 0) {
-      this.router.navigate(['/travel/result']);
+      this.router.navigate(['/travel/result'], { replaceUrl: true });
     } else {
       const err = result?.data?.error ? result.data.error : 'Service Error'
       this.reportError(err);
@@ -85,12 +85,12 @@ export class ServiceProgressComponent implements OnInit {
   }
 
   sampleSearchData = {
-    "from": "New York",
-    "to": "Tokyo",
-    "departDate": "2026-05-01",
-    "returnDate": "2026-05-05",
+    "fromCity": "New York",
+    "destination": "Tokyo",
+    "startDate": "2026-06-01",
+    "endDate": "2026-06-05",
     "travelers": 2,
-    "budget": "moderate",
+    "budget": "$3,500",
     "interests": ["coding", "hiking", "food"]
   }
 
@@ -104,18 +104,23 @@ export class ServiceProgressComponent implements OnInit {
 
   runProgressDemo() {
     this.agent.getSampleResponse();
-    this.router.navigate(['/travel/result']);
+    this.router.navigate(['/travel/result'], { replaceUrl: true });
   }
 
   runProgress() {
 
     if (!haveValidToken()) {
       // No token → login first → then call getTripPlan
-      this.agent.doLogin('visitor', 'tESTPASSWORD$123').subscribe
-        (tokenPair => {
+      this.agent.doLogin('visitor', 'tESTPASSWORD$123').subscribe({
+        next: (tokenPair => {
           storeToken(tokenPair.access_token)
           this.getTripPlan();
-        });
+        }),
+        error: (err => {
+          console.error('Login failed', err);
+          this.reportError('Authentication failed.');
+        })
+      });
     } else {
       this.getTripPlan();
     }
@@ -126,34 +131,8 @@ export class ServiceProgressComponent implements OnInit {
       if (this.currentStep === this.steps.length) {
         this.currentStep = 0;
       }
-    }, 500);
+    }, 1000);
 
-
-
-    // When backend finishes streaming, it triggers Step 2
-    /**this.agent.getFinalTripPlan(payload).subscribe(result => {
-        this.agent.tripPlan.set(result);   // store result
-        this.result = result;
-        clearInterval(interval);
-        this.router.navigate(['/travel/result']);
-    });*/
-
-    /* this.agent.getTripPlan(payload).subscribe({
-      next: (result) => {
-        this.agent.tripPlan.set(result);   // store result
-        this.result = result;
-        clearInterval(interval);
-        this.router.navigate(['/travel/result']);
-      },
-      error: (err) => {
-        console.error('Trip plan error:', err);
-         this.result = { error: 'Failed to generate trip plan. Please try again.' , details: err};
-         
-        this.agent.tripPlan.set(this.result);   // store result
-        clearInterval(interval);
-        this.router.navigate(['/travel/result']);
-      }
-    });*/
   }
 
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { getToken, haveValidToken } from '../utils/token-utils';
 import { TravelPlan } from '../models/travel-plan.model';
 import { SearchData } from '../models/search-data.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { SearchData } from '../models/search-data.model';
 export class TravelAiAgentService {
 
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8000'; //TODO : read it from env variables or config file instead of hardcoding it here
+  private baseUrl = environment.baseUrl;
 
 
   //TODO : read it from env variables or config file instead of hardcoding it here
@@ -45,6 +46,15 @@ export class TravelAiAgentService {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }
     )
+  }
+
+  resetSarchState() {
+    this.tripPlan.set(undefined);
+    this.statusMessages.set([]);
+    this.isStreaming.set(false);
+    this.error.set(null);
+    this.searchData.set(undefined);
+    sessionStorage.removeItem('error');
   }
 
 
@@ -118,8 +128,14 @@ export class TravelAiAgentService {
 
     this.http.post(`${this.baseUrl}/api/trip/getTripPlan`, payload, { headers }).subscribe({
       next: (response) => this.startStream(response),
-      error: () => console.warn('POST failed, but SSE will still run')
+      error: (err) => this.onError(err || 'Failed to get trip plan')
     });
+  }
+
+  onError(error: any) {
+    console.error('Error:', error);
+    this.error.set(error);
+    this.isStreaming.set(false);
   }
 
 

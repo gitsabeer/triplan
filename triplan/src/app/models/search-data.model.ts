@@ -20,7 +20,6 @@ export class SearchData {
   }
 
   createPayload() {
-
     const formatDate = (date: any): string => {
       if (!date) return '';
       try {
@@ -35,14 +34,21 @@ export class SearchData {
       }
     };
 
+    const budgetMap: Record<string, string> = {
+      'low': '$1,500',
+      'moderate': '$3,500',
+      'high': '$5,000'
+    };
+    const backendBudget = budgetMap[String(this.budget).toLowerCase()] || '$3,500';
+
     const dataObj = {
-      from: this.from,
-      to: this.to,
-      departDate: formatDate(this.departDate),
-      returnDate: formatDate(this.returnDate),
+      fromCity: this.from,
+      destination: this.to,
+      startDate: formatDate(this.departDate),
+      endDate: formatDate(this.returnDate),
       travelers: this.travelers,
-      budget: this.budget,
-      interests: this.interests
+      budget: backendBudget,
+      interests: this.interests.length > 0 ? this.interests : ['travel']
     };
     return dataObj;
   }

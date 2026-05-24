@@ -57,7 +57,45 @@ export class TravelSearchComponent implements OnInit {
 
   constructor() { }
 
+  searchFormValidator(group: FormGroup) {
+    const from = group.get('from');
+    const to = group.get('to');
+    const departDate = group.get('departDate');
+    const returnDate = group.get('returnDate');
+
+    // Reset custom errors
+    if (to?.hasError('sameCities')) {
+      const errs = { ...to.errors };
+      delete errs['sameCities'];
+      to.setErrors(Object.keys(errs).length ? errs : null);
+    }
+    if (returnDate?.hasError('sameDates')) {
+      const errs = { ...returnDate.errors };
+      delete errs['sameDates'];
+      returnDate.setErrors(Object.keys(errs).length ? errs : null);
+    }
+
+    // 1. Same cities validation
+    if (from?.value && to?.value && from.value.trim().toLowerCase() === to.value.trim().toLowerCase()) {
+      to.setErrors({ ...to.errors, sameCities: true });
+    }
+
+    // 2. Same dates validation
+    if (departDate?.value && returnDate?.value) {
+      const d1 = new Date(departDate.value);
+      const d2 = new Date(returnDate.value);
+      d1.setHours(0, 0, 0, 0);
+      d2.setHours(0, 0, 0, 0);
+
+      if (d1.getTime() === d2.getTime()) {
+        returnDate.setErrors({ ...returnDate.errors, sameDates: true });
+      }
+    }
+    return null;
+  }
+
   ngOnInit(): void {
+    this.agent.resetSarchState();
     this.form = this.fb.group({
       from: ['', Validators.required],
       to: ['', Validators.required],
@@ -66,7 +104,7 @@ export class TravelSearchComponent implements OnInit {
       travelers: [1, Validators.required],
       budget: ['moderate', Validators.required],
       interests: [[]]
-    });
+    }, { validators: this.searchFormValidator });
   }
 
   toggleInterest(tag: string) {

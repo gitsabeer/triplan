@@ -22,9 +22,20 @@ app = FastAPI(
 
 
 # List the specific origins you want to allow
-origins = [
-    "http://localhost:4200",
-]
+allowed_origins_env = os.environ.get("ALLOWED_ORIGINS")
+if allowed_origins_env:
+    if ";" in allowed_origins_env:
+        origins = [origin.strip() for origin in allowed_origins_env.split(";") if origin.strip()]
+    else:
+        origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+    if "http://localhost:4200" not in origins:
+        origins.append("http://localhost:4200")
+else:
+    origins = [
+        "http://localhost:4200",
+        "https://triplan-sab-827419.web.app",
+        "https://triplan-sab-827419.firebaseapp.com",
+    ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -53,6 +64,6 @@ def root():
     return {"message": "AI Travel Planner API is running"}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT", 8080))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
     logger.info("AI Travel Planner API has started successfully.")

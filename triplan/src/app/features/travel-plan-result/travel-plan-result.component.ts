@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, signal, ElementRef, ViewChild  } from '@angular/core';
+import { Component, inject, OnInit, signal, ElementRef, ViewChild } from '@angular/core';
 import { TravelAiAgentService } from '../../services/travel-ai-agent.service';
-import { DatePipe, NgClass, NgFor, NgIf,Location  } from '@angular/common';
+import { DatePipe, NgClass, NgFor, NgIf, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { TravelPlan } from '../../models/travel-plan.model';
-import { 
+import {
   LucideAngularModule
 } from 'lucide-angular';
 import html2canvas from 'html2canvas';
@@ -12,7 +13,7 @@ import { AppStateService } from '../../services/app-state.service';
 @Component({
   selector: 'app-travel-plan-result',
   standalone: true,
-  imports: [NgClass, NgFor, NgIf, LucideAngularModule,DatePipe], 
+  imports: [NgClass, NgFor, NgIf, LucideAngularModule, DatePipe],
   templateUrl: './travel-plan-result.component.html',
   styleUrl: './travel-plan-result.component.scss'
 })
@@ -21,13 +22,17 @@ export class TravelPlanResultComponent implements OnInit {
 
   agent = inject(TravelAiAgentService);
   appState = inject(AppStateService);
+  router = inject(Router);
   plan: TravelPlan | undefined;
   viewMode = signal<'itinerary' | 'logistics'>('itinerary');
 
-  constructor(private location: Location) {}
+  constructor(private location: Location) { }
 
   ngOnInit() {
     this.plan = this.agent.tripPlan();
+    if (!this.plan) {
+      this.router.navigate(['/travel']);
+    }
   }
 
   setView(mode: 'itinerary' | 'logistics') {
@@ -35,7 +40,8 @@ export class TravelPlanResultComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    this.agent.resetSarchState();
+    this.router.navigate(['/travel']);
   }
 
   formatPrice(price: string): string {
@@ -62,7 +68,7 @@ export class TravelPlanResultComponent implements OnInit {
     const parts = timeStr.split(' ');
     const timePart = parts[0];
     const suffix = parts.slice(1).join(' ');
-    
+
     const timeMatch = timePart.match(/^([0-9]{1,2}):([0-9]{2})$/);
     if (timeMatch) {
       let hours = parseInt(timeMatch[1], 10);
@@ -91,7 +97,7 @@ export class TravelPlanResultComponent implements OnInit {
     return gateStr;
   }
 
-  download(){
+  download() {
 
     const element = this.pdfContent.nativeElement;
 

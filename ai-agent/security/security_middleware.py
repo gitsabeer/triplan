@@ -69,9 +69,10 @@ class SecurityMiddleware(BaseHTTPMiddleware):
             })
             return response
         
-        # 2. Allow JWT-protected routes (Authorization header)
+        # 2. Allow JWT-protected routes (Authorization header or token query parameter)
         auth_header = request.headers.get("Authorization")
-        if auth_header and auth_header.startswith("Bearer "):
+        query_token = request.query_params.get("token")
+        if (auth_header and auth_header.startswith("Bearer ")) or query_token:
             response = await call_next(request)
             write_audit({
                 "type": "jwt_request",
