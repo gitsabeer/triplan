@@ -11,6 +11,9 @@
         <mat-form-field appearance="outline">
           <mat-label>{{ appState.t('FROM_CITY') }}</mat-label>
           <input matInput type="text" formControlName="from" placeholder="e.g. New York, USA" />
+          <mat-error *ngIf="form.get('from')?.hasError('required')">
+            Departure city is required
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -18,6 +21,9 @@
         <mat-form-field appearance="outline">
           <mat-label>{{ appState.t('DESTINATION') }}</mat-label>
           <input matInput type="text" formControlName="to" placeholder="e.g. Kyoto, Japan" />
+          <mat-error *ngIf="form.get('to')?.hasError('required')">
+            Destination is required
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -25,18 +31,30 @@
         <div class="form-group half-width">
           <mat-form-field appearance="outline">
             <mat-label>{{ appState.t('DEPART') }}</mat-label>
-            <input matInput [matDatepicker]="departPicker" formControlName="departDate" placeholder="MM/DD/YYYY" />
+            <input matInput [matDatepicker]="departPicker" formControlName="departDate" placeholder="MM/DD/YYYY" [min]="minDate" />
             <mat-datepicker-toggle matIconSuffix [for]="departPicker"></mat-datepicker-toggle>
             <mat-datepicker #departPicker></mat-datepicker>
+            <mat-error *ngIf="form.get('departDate')?.hasError('required')">
+              Departure date is required
+            </mat-error>
+            <mat-error *ngIf="form.get('departDate')?.hasError('matDatepickerMin')">
+              Departure date cannot be in the past
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="form-group half-width">
           <mat-form-field appearance="outline">
             <mat-label>{{ appState.t('RETURN') }}</mat-label>
-            <input matInput [matDatepicker]="returnPicker" formControlName="returnDate" placeholder="MM/DD/YYYY" />
+            <input matInput [matDatepicker]="returnPicker" formControlName="returnDate" placeholder="MM/DD/YYYY" [min]="form.get('departDate')?.value || minDate" />
             <mat-datepicker-toggle matIconSuffix [for]="returnPicker"></mat-datepicker-toggle>
             <mat-datepicker #returnPicker></mat-datepicker>
+            <mat-error *ngIf="form.get('returnDate')?.hasError('required')">
+              Return date is required
+            </mat-error>
+            <mat-error *ngIf="form.get('returnDate')?.hasError('matDatepickerMin')">
+              Return date must be after departure date
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -46,6 +64,9 @@
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>{{ appState.t('TRAVELERS') }}</mat-label>
             <input matInput type="number" formControlName="travelers" min="1" />
+            <mat-error *ngIf="form.get('travelers')?.hasError('required')">
+              Number of travelers is required
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -71,7 +92,7 @@
         </div>
       </div>
 
-      <button mat-flat-button color="primary" type="submit" class="cta-btn" [disabled]="form.invalid">
+      <button mat-flat-button color="primary" type="submit" class="cta-btn">
         {{ appState.t('EXPLORE') }}
       </button>
     </form>

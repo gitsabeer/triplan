@@ -48,6 +48,12 @@ export class TravelSearchComponent implements OnInit {
   fb = inject(FormBuilder);
   agent = inject(TravelAiAgentService);
 
+  minDate: Date = (() => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  })();
+
   constructor() {}
 
   ngOnInit(): void {
@@ -55,7 +61,7 @@ export class TravelSearchComponent implements OnInit {
       from: ['', Validators.required],
       to: ['', Validators.required],
       departDate: ['', Validators.required],
-      returnDate: [''],
+      returnDate: ['', Validators.required],
       travelers: [1, Validators.required],
       budget: ['moderate', Validators.required],
       interests: [[]]
@@ -73,7 +79,10 @@ export class TravelSearchComponent implements OnInit {
   }
 
   onSearch() {
-  
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
     console.log('Search Data:', this.form.value);
 

@@ -11,7 +11,7 @@
 
   &-primary {
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-primary-text, #241a00);
 
     &:hover {
       background: var(--color-primary-hover);

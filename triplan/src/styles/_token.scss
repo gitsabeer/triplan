@@ -1,20 +1,22 @@
 :root {
-  // Angular Material 3 / MDC System Tokens
-  --mat-sys-primary: #2563eb;
-  --mat-sys-primary-hover: #1d4ed8;
-  --mat-sys-background: #ffffff;
+  // Angular Material 3 / MDC System Tokens (Luminous Horizon Theme)
+  --mat-sys-primary: #ffd54f;
+  --mat-sys-primary-hover: #ebc23e;
+  --color-primary-text: #241a00;
+  --mat-sys-background: #f4faff;
   --mat-sys-surface: #ffffff;
-  --mat-sys-surface-container: #ffffff;
-  --mat-sys-surface-container-high: #f3f4f6;
-  --mat-sys-outline: #e0e0e5;
-  --mat-sys-on-surface: #111827;
-  --mat-sys-on-surface-variant: #6b7280;
-  --mat-sys-primary-container: #dbeafe;
-  --mat-sys-on-primary-container: #1e40af;
-  --mat-sys-corner-small: 6px;
-  --mat-sys-corner-medium: 10px;
-  --mat-sys-corner-large: 16px;
-  --mat-sys-level1: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --mat-sys-surface-container: #dff1fb;
+  --mat-sys-surface-container-high: #e7f6ff;
+  --mat-sys-outline: #d0c6ae;
+  --mat-sys-on-surface: #0d1e25;
+  --mat-sys-on-surface-variant: #4d4634;
+  --mat-sys-primary-container: #dff1fb;
+  --mat-sys-on-primary-container: #0d1e25;
+  
+  --mat-sys-corner-small: 4px;
+  --mat-sys-corner-medium: 8px;
+  --mat-sys-corner-large: 12px;
+  --mat-sys-level1: 0px 4px 16px rgba(55, 71, 79, 0.08);
 
   // App Theme Mappings (using Material 3 CSS variables)
   --color-primary: var(--mat-sys-primary);
@@ -24,8 +26,12 @@
   --color-border: var(--mat-sys-outline);
   --color-text: var(--mat-sys-on-surface);
   --color-muted: var(--mat-sys-on-surface-variant);
-  --color-tag-bg: var(--mat-sys-surface-container-high);
-  --color-accent-soft: var(--mat-sys-primary-container);
+  --color-tag-bg: rgba(0, 100, 147, 0.08);
+  --color-accent-soft: rgba(0, 100, 147, 0.15);
+  --secondary-color: #006493;
+
+  // Background Gradient Overlay for Hero Layout
+  --gradient-overlay: linear-gradient(to right, rgba(244, 250, 255, 0.95) 0%, rgba(244, 250, 255, 0.6) 60%, rgba(244, 250, 255, 0.3) 100%);
 
   // Radius Mappings
   --radius-sm: var(--mat-sys-corner-small);
@@ -36,28 +42,36 @@
   // Shadow Mappings
   --shadow-card: var(--mat-sys-level1);
 
-  // Spacing
-  --space-xs: 6px;
-  --space-sm: 10px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
+  // Spacing (Matching Stitch Spacing Grid)
+  --space-xs: 4px;
+  --space-sm: 12px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
 
-  // Font
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  // Font (Plus Jakarta Sans Voice, Inter Info grid)
+  --font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body.dark-theme, .dark-theme {
   // Angular Material 3 Dark Theme System Tokens
-  --mat-sys-primary: #3b82f6;
-  --mat-sys-primary-hover: #60a5fa;
-  --mat-sys-background: #0b0f19;
-  --mat-sys-surface: #111827;
-  --mat-sys-surface-container: #111827;
-  --mat-sys-surface-container-high: #1f2937;
-  --mat-sys-outline: #1f2937;
-  --mat-sys-on-surface: #f9fafb;
-  --mat-sys-on-surface-variant: #9ca3af;
-  --mat-sys-primary-container: rgba(59, 130, 246, 0.15);
+  --mat-sys-primary: #ffd54f;
+  --mat-sys-primary-hover: #ffe087;
+  --color-primary-text: #241a00;
+  --mat-sys-background: #0d1e25;
+  --mat-sys-surface: #132730;
+  --mat-sys-surface-container: #1b3541;
+  --mat-sys-surface-container-high: #234351;
+  --mat-sys-outline: #4d4634;
+  --mat-sys-on-surface: #f4faff;
+  --mat-sys-on-surface-variant: #d0c6ae;
+  --mat-sys-primary-container: #1b3541;
+  --mat-sys-on-primary-container: #f4faff;
+
+  --secondary-color: #24b2fe;
+  --color-tag-bg: rgba(36, 178, 254, 0.1);
+  --color-accent-soft: rgba(36, 178, 254, 0.2);
+
+  --gradient-overlay: linear-gradient(to right, rgba(13, 30, 37, 0.95) 0%, rgba(13, 30, 37, 0.7) 60%, rgba(13, 30, 37, 0.3) 100%);
 }
 

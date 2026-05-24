@@ -14,7 +14,11 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 70px);
-  background: $result-bg;
+  background-image: var(--gradient-overlay), 
+                    url('../../../assets/images/tiplan-search-view-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   box-sizing: border-box;
   padding: 20px;
 }
@@ -59,6 +63,13 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
     width: 100%;
     max-width: 100% !important;
     box-sizing: border-box;
+
+    ::ng-deep input.mat-mdc-input-element {
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+    }
   }
 
   h2 {
@@ -166,9 +177,9 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
 
     .tag {
       padding: 0.5rem 1.1rem;
-      background: var(--color-tag-bg, #f3f4f6);
-      color: $text-muted;
-      border: 1px solid $border-subtle;
+      background: var(--color-tag-bg);
+      color: var(--secondary-color, #006493);
+      border: 1px solid rgba(0, 100, 147, 0.2);
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -177,17 +188,18 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
       transition: all 0.2s ease;
 
       &:hover {
-        background: var(--color-tag-bg, #e5e7eb);
-        color: $text-main;
+        background: var(--color-accent-soft);
+        color: var(--secondary-color, #006493);
       }
 
       &.active {
-        background: $accent-soft;
-        color: #1e40af;
+        background: var(--secondary-color, #006493) !important;
+        color: #ffffff !important;
         border-color: transparent;
 
         &:hover {
-          background: #cbd5e1;
+          background: var(--secondary-color, #006493) !important;
+          opacity: 0.9;
         }
       }
     }
@@ -199,24 +211,25 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
     margin-top: 1.5rem;
     padding: 1.6rem !important;
     background-color: $accent !important;
-    color: #ffffff !important;
+    color: var(--color-primary-text, #241a00) !important;
     border-radius: 999px !important;
     font-size: 1rem !important;
     font-weight: 700 !important;
     line-height: 1 !important;
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
+    box-shadow: 0px 4px 16px rgba(55, 71, 79, 0.08) !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     height: auto !important;
 
     &:hover:not([disabled]) {
-      background-color: var(--color-primary-hover, #1d4ed8) !important;
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3) !important;
+      background-color: var(--color-primary-hover, #ebc23e) !important;
+      box-shadow: 0px 8px 32px rgba(55, 71, 79, 0.12) !important;
       transform: translateY(-1px);
     }
 
     &:active:not([disabled]) {
-      transform: translateY(0);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
+      transform: translateY(1px) !important;
+      border-bottom: 0px !important;
     }
 
     &:disabled {
@@ -224,6 +237,7 @@ $accent-soft: var(--color-accent-soft, #dbeafe);
       color: $text-muted !important;
       box-shadow: none !important;
       cursor: not-allowed;
+      border-bottom: none !important;
     }
   }
 }
