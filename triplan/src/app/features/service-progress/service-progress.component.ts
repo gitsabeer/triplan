@@ -27,7 +27,7 @@ export class ServiceProgressComponent implements OnInit {
 
   currentStep = 0;
   result: any = null;
-  interval: NodeJS.Timeout | undefined;
+  interval: any;
 
 
   constructor() {    

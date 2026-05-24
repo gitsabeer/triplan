@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { TravelSearchComponent } from './travel-search.component';
 
@@ -8,7 +11,12 @@ describe('TravelSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TravelSearchComponent]
+      imports: [TravelSearchComponent],
+      providers: [
+        provideHttpClient(),
+        provideRouter([]),
+        provideAnimations()
+      ]
     })
     .compileComponents();
 

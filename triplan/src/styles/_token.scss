@@ -1,23 +1,40 @@
 :root {
-  // Colors
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-bg: #ffffff;
-  --color-card-bg: #ffffff;
-  --color-border: #e0e0e5;
-  --color-text: #111827;
-  --color-muted: #6b7280;
-  --color-tag-bg: #f3f4f6;
-  --color-accent-soft: #dbeafe;
+  // Angular Material 3 / MDC System Tokens
+  --mat-sys-primary: #2563eb;
+  --mat-sys-primary-hover: #1d4ed8;
+  --mat-sys-background: #ffffff;
+  --mat-sys-surface: #ffffff;
+  --mat-sys-surface-container: #ffffff;
+  --mat-sys-surface-container-high: #f3f4f6;
+  --mat-sys-outline: #e0e0e5;
+  --mat-sys-on-surface: #111827;
+  --mat-sys-on-surface-variant: #6b7280;
+  --mat-sys-primary-container: #dbeafe;
+  --mat-sys-on-primary-container: #1e40af;
+  --mat-sys-corner-small: 6px;
+  --mat-sys-corner-medium: 10px;
+  --mat-sys-corner-large: 16px;
+  --mat-sys-level1: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 
-  // Radius
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-pill: 20px;
+  // App Theme Mappings (using Material 3 CSS variables)
+  --color-primary: var(--mat-sys-primary);
+  --color-primary-hover: var(--mat-sys-primary-hover);
+  --color-bg: var(--mat-sys-background);
+  --color-card-bg: var(--mat-sys-surface);
+  --color-border: var(--mat-sys-outline);
+  --color-text: var(--mat-sys-on-surface);
+  --color-muted: var(--mat-sys-on-surface-variant);
+  --color-tag-bg: var(--mat-sys-surface-container-high);
+  --color-accent-soft: var(--mat-sys-primary-container);
 
-  // Shadow
-  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  // Radius Mappings
+  --radius-sm: var(--mat-sys-corner-small);
+  --radius-md: var(--mat-sys-corner-medium);
+  --radius-lg: var(--mat-sys-corner-large);
+  --radius-pill: 999px;
+
+  // Shadow Mappings
+  --shadow-card: var(--mat-sys-level1);
 
   // Spacing
   --space-xs: 6px;
@@ -31,14 +48,16 @@
 }
 
 body.dark-theme, .dark-theme {
-  --color-bg: #0b0f19;
-  --color-card-bg: #111827;
-  --color-border: #1f2937;
-  --color-text: #f9fafb;
-  --color-muted: #9ca3af;
-  --color-tag-bg: #1f2937;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #60a5fa;
-  --color-accent-soft: rgba(59, 130, 246, 0.15);
+  // Angular Material 3 Dark Theme System Tokens
+  --mat-sys-primary: #3b82f6;
+  --mat-sys-primary-hover: #60a5fa;
+  --mat-sys-background: #0b0f19;
+  --mat-sys-surface: #111827;
+  --mat-sys-surface-container: #111827;
+  --mat-sys-surface-container-high: #1f2937;
+  --mat-sys-outline: #1f2937;
+  --mat-sys-on-surface: #f9fafb;
+  --mat-sys-on-surface-variant: #9ca3af;
+  --mat-sys-primary-container: rgba(59, 130, 246, 0.15);
 }
 
