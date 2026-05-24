@@ -20,6 +20,10 @@ export interface UserTripItem {
   providedIn: 'root'
 })
 export class AppStateService {
+
+  setSearchForm(value: any) {
+    throw new Error('Method not implemented.');
+  }
   // Theme Signal ('normal' | 'dark')
   theme = signal<'normal' | 'dark'>('normal');
 
@@ -28,8 +32,8 @@ export class AppStateService {
 
   // User Profile Signal
   userProfile = signal<UserProfile>({
-    name: 'Siji Sabeer',
-    email: 'siji@triplan.ai',
+    name: 'Some One',
+    email: 'someone@triplan.ai',
     bio: 'Tech enthusiast and adventurous traveler who loves exploring hidden hiking trails and authentic local cuisines.',
     favorites: 'Culture, Hiking, Food'
   });
@@ -187,8 +191,8 @@ export class AppStateService {
   }
 
   addTrip(trip: Omit<UserTripItem, 'id'>) {
-    const nextId = this.userItems().length > 0 
-      ? Math.max(...this.userItems().map(t => t.id)) + 1 
+    const nextId = this.userItems().length > 0
+      ? Math.max(...this.userItems().map(t => t.id)) + 1
       : 1;
     this.userItems.update(items => [...items, { ...trip, id: nextId }]);
   }
