@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { TravelAiAgentService } from '../../services/travel-ai-agent.service';
 import { NgFor, NgIf } from '@angular/common';
 import { haveValidToken, storeToken } from '../../utils/token-utils';
-import { timeInterval } from 'rxjs';
-import { SearchData } from '../../models/search-data.model';
 
 @Component({
   selector: 'app-service-progress',

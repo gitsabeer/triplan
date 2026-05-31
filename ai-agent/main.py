@@ -28,13 +28,10 @@ if allowed_origins_env:
         origins = [origin.strip() for origin in allowed_origins_env.split(";") if origin.strip()]
     else:
         origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
-    if "http://localhost:4200" not in origins:
-        origins.append("http://localhost:4200")
 else:
     origins = [
-        "http://localhost:4200",
-        "https://triplan-sab-827419.web.app",
-        "https://triplan-sab-827419.firebaseapp.com",
+        "https://triplan-497315.web.app",
+        "https://triplan-497315.firebaseapp.com"
     ]
 
 app.add_middleware(

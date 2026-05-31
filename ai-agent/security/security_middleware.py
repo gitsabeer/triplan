@@ -37,7 +37,8 @@ WINDOW = 60      # seconds
 request_log = {}
 ALLOWED_IPS = ["127.0.0.1","localhost"]  # For demo purposes, only allow localhost. In production, this should be more robust.
 PUBLIC_PATHS = [
-   "/auth/login",
+    "/",
+    "/auth/login",
     "/auth/refresh",
     "/docs",
     "/health",

@@ -38,7 +38,7 @@ try:
 except Exception as e:
     logger.error("API key NOT found or invalid.")
     logger.error(str(e))
-    exit(1)
+    # Do not call exit(1) so that the web server can still start and serve other requests (like authentication and status health checks).
 
 
 router = APIRouter(tags=["travel"])
